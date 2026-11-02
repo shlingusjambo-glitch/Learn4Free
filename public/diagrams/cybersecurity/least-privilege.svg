@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">PRINCIPLE OF LEAST PRIVILEGE &amp; RBAC</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Users and services receive ONLY the minimum permissions needed to fulfill their duty.</text>
+
+    <!-- Role Matrix Grid -->
+    <g transform="translate(30, 80)">
+      <rect width="540" height="185" rx="8" fill="url(#cardGrad)" stroke="#253158" stroke-width="1.5"/>
+
+      <!-- Matrix Header -->
+      <g transform="translate(20, 20)">
+        <rect width="120" height="30" rx="4" fill="#0c1124"/>
+        <text x="60" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">ROLE</text>
+
+        <rect x="130" y="0" width="115" height="30" rx="4" fill="#0c1124"/>
+        <text x="187" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">READ</text>
+
+        <rect x="255" y="0" width="115" height="30" rx="4" fill="#0c1124"/>
+        <text x="312" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">WRITE</text>
+
+        <rect x="380" y="0" width="120" height="30" rx="4" fill="#0c1124"/>
+        <text x="440" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#94a3b8">ADMIN / DELETE</text>
+      </g>
+
+      <!-- Row 1: Guest -->
+      <g transform="translate(20, 58)">
+        <rect width="120" height="26" rx="4" fill="#1e2440"/>
+        <text x="15" y="18" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">GUEST</text>
+        <circle cx="187" cy="13" r="7" fill="#34d399"/>
+        <circle cx="312" cy="13" r="7" fill="#475569"/>
+        <circle cx="440" cy="13" r="7" fill="#475569"/>
+      </g>
+
+      <!-- Row 2: Member -->
+      <g transform="translate(20, 90)">
+        <rect width="120" height="26" rx="4" fill="#1e2440"/>
+        <text x="15" y="18" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffd600">OPERATOR</text>
+        <circle cx="187" cy="13" r="7" fill="#34d399"/>
+        <circle cx="312" cy="13" r="7" fill="#34d399"/>
+        <circle cx="440" cy="13" r="7" fill="#475569"/>
+      </g>
+
+      <!-- Row 3: Admin -->
+      <g transform="translate(20, 122)">
+        <rect width="120" height="26" rx="4" fill="#1e2440"/>
+        <text x="15" y="18" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f87171">COMMANDER</text>
+        <circle cx="187" cy="13" r="7" fill="#34d399"/>
+        <circle cx="312" cy="13" r="7" fill="#34d399"/>
+        <circle cx="440" cy="13" r="7" fill="#34d399"/>
+      </g>
+
+      <!-- Footer Rule -->
+      <text x="20" y="172" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Jurassic Park Lesson: Never grant Dennis Nedry unchecked root over the security perimeter!</text>
+    </g>
+  
+</svg>

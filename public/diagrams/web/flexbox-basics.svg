@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-flex" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="220" rx="12" fill="url(#bg-flex)" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="26" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Flexbox: Main Axis &amp; Cross Axis (Netflix Row Layout)</text>
+
+  <!-- Flex Container -->
+  <g transform="translate(40, 42)">
+    <rect width="520" height="150" rx="8" fill="#020617" stroke="#38bdf8" stroke-width="1.8"/>
+    <text x="15" y="20" fill="#38bdf8" font-size="11" font-weight="bold" font-family="monospace">display: flex; (Flex Container)</text>
+
+    <!-- Main Axis Indicator -->
+    <path d="M 15 36 L 490 36" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="490,32 500,36 490,40" fill="#f59e0b"/>
+    <text x="250" y="32" fill="#fbbf24" font-size="10" font-weight="bold" font-family="sans-serif">MAIN AXIS &rarr; justify-content: space-between</text>
+
+    <!-- Cross Axis Indicator -->
+    <path d="M 28 50 L 28 135" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="24,135 28,143 32,135" fill="#a855f7"/>
+    <text x="35" y="100" fill="#c084fc" font-size="9" font-weight="bold" font-family="sans-serif" transform="rotate(90, 35, 100)">CROSS AXIS &darr; align-items: center</text>
+
+    <!-- Flex Items (Movie Cards) -->
+    <g transform="translate(60, 52)">
+      <rect width="90" height="80" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="45" y="36" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Card 1</text>
+      <text x="45" y="55" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Iron Man</text>
+    </g>
+
+    <g transform="translate(170, 52)">
+      <rect width="90" height="80" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="45" y="36" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Card 2</text>
+      <text x="45" y="55" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Spider-Man</text>
+    </g>
+
+    <g transform="translate(280, 52)">
+      <rect width="90" height="80" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="45" y="36" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Card 3</text>
+      <text x="45" y="55" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Thor</text>
+    </g>
+
+    <g transform="translate(390, 52)">
+      <rect width="90" height="80" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="45" y="36" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Card 4</text>
+      <text x="45" y="55" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Hulk</text>
+    </g>
+  </g>
+</svg>

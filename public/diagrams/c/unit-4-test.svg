@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradU4T" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradU4T)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="150" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#ffd600" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">UNIT 4 CAPSTONE</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Secret Agent Cipher Decryptor</text>
+
+  <!-- Step 1: Two Pointers Converging -->
+  <g transform="translate(30, 70)">
+    <rect width="540" height="95" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="20" y="24" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">PHASE 1: reverse_buffer(int *start, int len)</text>
+
+    <!-- Visual Array Buffer -->
+    <g transform="translate(40, 36)">
+      <!-- Left Pointer -->
+      <text x="35" y="0" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">left &rarr;</text>
+      <rect x="10" y="8" width="50" height="36" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1.5"/>
+      <text x="35" y="31" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">60</text>
+
+      <rect x="70" y="8" width="50" height="36" rx="4" fill="#1e294b"/>
+      <text x="95" y="31" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="13">50</text>
+
+      <rect x="130" y="8" width="50" height="36" rx="4" fill="#1e294b"/>
+      <text x="155" y="31" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="13">40</text>
+
+      <rect x="190" y="8" width="50" height="36" rx="4" fill="#1e294b"/>
+      <text x="215" y="31" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="13">30</text>
+
+      <!-- Right Pointer -->
+      <rect x="250" y="8" width="50" height="36" rx="4" fill="#1e294b" stroke="#f472b6" stroke-width="1.5"/>
+      <text x="275" y="31" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="13" font-weight="700">20</text>
+      <text x="275" y="0" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="10" font-weight="700">&larr; right</text>
+
+      <!-- Swap arc -->
+      <path d="M 35 15 C 80 -10, 230 -10, 275 15" stroke="#ffd600" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+      <text x="155" y="-12" text-anchor="middle" fill="#ffd600" font-family="system-ui" font-size="9">Two Pointers Swap &amp; Converge</text>
+    </g>
+
+    <text x="380" y="55" fill="#94a3b8" font-family="monospace" font-size="10">while (left &lt; right) {</text>
+    <text x="390" y="70" fill="#e2e8f0" font-family="monospace" font-size="10">swap(*left, *right);</text>
+    <text x="390" y="85" fill="#38bdf8" font-family="monospace" font-size="10">left++; right--; }</text>
+  </g>
+
+  <!-- Step 2: Pointer Math Decrypt Offset -->
+  <g transform="translate(30, 180)">
+    <rect width="540" height="85" rx="8" fill="#151c33" stroke="#34d399" stroke-width="1.5"/>
+    <text x="20" y="24" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">PHASE 2: apply_cipher_offset(int *start, int len, int key)</text>
+
+    <!-- Transformed Array -->
+    <g transform="translate(40, 36)">
+      <rect x="10" y="0" width="50" height="34" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1"/>
+      <text x="35" y="22" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">10</text>
+
+      <rect x="70" y="0" width="50" height="34" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1"/>
+      <text x="95" y="22" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">20</text>
+
+      <rect x="130" y="0" width="50" height="34" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1"/>
+      <text x="155" y="22" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">30</text>
+
+      <rect x="190" y="0" width="50" height="34" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1"/>
+      <text x="215" y="22" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">40</text>
+
+      <rect x="250" y="0" width="50" height="34" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1"/>
+      <text x="275" y="22" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">50</text>
+    </g>
+
+    <text x="380" y="48" fill="#e2e8f0" font-family="monospace" font-size="10">*curr -= key; curr++;</text>
+    <text x="380" y="66" fill="#34d399" font-family="system-ui" font-size="10" font-weight="700">&check; In-place memory mutation!</text>
+  </g>
+
+  <text x="300" y="285" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">
+    Pointer arithmetic manipulates raw hardware memory directly with zero auxiliary memory allocations.
+  </text>
+</svg>

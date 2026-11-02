@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradLp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradLp)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="160" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#34d399" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">LOOP LIFECYCLE</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Groundhog Day &bull; Rocky Montage</text>
+
+  <!-- Step 1: Initialization -->
+  <g transform="translate(30, 100)">
+    <rect width="115" height="70" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="57" y="24" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">1. INIT</text>
+    <text x="57" y="44" text-anchor="middle" fill="#e2e8f0" font-family="monospace" font-size="11">int i = n;</text>
+    <text x="57" y="58" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Runs Once</text>
+  </g>
+
+  <!-- Arrow to Condition -->
+  <line x1="145" y1="135" x2="185" y2="135" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="188,135 180,130 180,140" fill="#38bdf8"/>
+
+  <!-- Step 2: Condition Diamond -->
+  <g transform="translate(255, 135)">
+    <polygon points="0,-40 65,0 0,40 -65,0" fill="#1e294b" stroke="#ffd600" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">2. CHECK</text>
+    <text x="0" y="10" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11">i &gt; 0 ?</text>
+    <text x="0" y="24" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="8">Condition</text>
+  </g>
+
+  <!-- True Arrow Down to Body -->
+  <line x1="255" y1="175" x2="255" y2="210" stroke="#34d399" stroke-width="2"/>
+  <polygon points="255,213 250,205 260,205" fill="#34d399"/>
+  <text x="265" y="196" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">true</text>
+
+  <!-- Step 3: Loop Body -->
+  <g transform="translate(180, 215)">
+    <rect width="150" height="60" rx="8" fill="#151c33" stroke="#34d399" stroke-width="1.5"/>
+    <text x="75" y="22" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">3. EXECUTE BODY</text>
+    <text x="75" y="40" text-anchor="middle" fill="#e2e8f0" font-family="monospace" font-size="10">printf("%d ", i);</text>
+    <text x="75" y="52" text-anchor="middle" fill="#a3e635" font-family="monospace" font-size="10">sum += i;</text>
+  </g>
+
+  <!-- Step 4: Step / Decrement Loopback -->
+  <g transform="translate(390, 215)">
+    <rect width="115" height="60" rx="8" fill="#151c33" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="57" y="22" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="11" font-weight="700">4. STEP</text>
+    <text x="57" y="42" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="12" font-weight="700">i--</text>
+  </g>
+
+  <!-- Connection Body to Step -->
+  <line x1="330" y1="245" x2="390" y2="245" stroke="#f472b6" stroke-width="2"/>
+  <polygon points="390,245 382,240 382,250" fill="#f472b6"/>
+
+  <!-- Loopback curve to Condition -->
+  <path d="M 505 245 C 540 245, 540 100, 325 100" stroke="#f472b6" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  <polygon points="323,100 331,95 331,105" fill="#f472b6"/>
+  <text x="545" y="175" text-anchor="middle" fill="#f472b6" font-family="system-ui" font-size="9">Loop again</text>
+
+  <!-- False Arrow: Exit -->
+  <line x1="320" y1="135" x2="420" y2="135" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="423,135 415,130 415,140" fill="#ef4444"/>
+  <text x="350" y="125" fill="#ef4444" font-family="monospace" font-size="10" font-weight="700">false (i &lt;= 0)</text>
+
+  <!-- Step 5: Termination -->
+  <g transform="translate(430, 105)">
+    <rect width="135" height="60" rx="8" fill="#1e294b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="67" y="24" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="11" font-weight="700">EXIT LOOP</text>
+    <text x="67" y="44" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11">BLASTOFF!</text>
+  </g>
+</svg>

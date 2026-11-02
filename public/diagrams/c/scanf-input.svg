@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad3)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="180" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#ffd600" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">SCANF &amp; ADDRESS-OF &amp;</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Delivery to Physical Address</text>
+
+  <!-- Left: Standard Input Buffer (Terminal Keyboard) -->
+  <g transform="translate(30, 80)">
+    <rect width="140" height="150" rx="8" fill="#070a16" stroke="#475569" stroke-width="1.5"/>
+    <rect width="140" height="26" rx="8" fill="#121a2d"/>
+    <text x="70" y="18" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">stdin buffer</text>
+    <text x="14" y="55" fill="#64748b" font-family="monospace" font-size="10">User Types:</text>
+    <rect x="14" y="65" width="112" height="36" rx="4" fill="#1e294b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="24" y="88" fill="#38bdf8" font-family="monospace" font-size="14" font-weight="700">10  2500\n</text>
+    <text x="70" y="125" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Stream of ASCII text</text>
+    <text x="70" y="138" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">waiting to be parsed</text>
+  </g>
+
+  <!-- Middle: scanf function parser -->
+  <g transform="translate(205, 80)">
+    <rect width="160" height="150" rx="8" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+    <rect width="160" height="26" rx="8" fill="#242338"/>
+    <text x="80" y="18" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">scanf("%d %d", ...)</text>
+
+    <text x="14" y="55" fill="#e2e8f0" font-family="system-ui" font-size="11" font-weight="600">Parser requires</text>
+    <text x="14" y="70" fill="#ffd600" font-family="system-ui" font-size="11" font-weight="700">DESTINATION &amp;</text>
+
+    <!-- Address-of badges -->
+    <rect x="14" y="85" width="60" height="28" rx="4" fill="#1e294b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="44" y="104" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="700">&amp;level</text>
+
+    <rect x="85" y="85" width="60" height="28" rx="4" fill="#1e294b" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="115" y="104" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="12" font-weight="700">&amp;xp</text>
+
+    <text x="80" y="135" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">&amp; means "Address Of"</text>
+  </g>
+
+  <!-- Connecting Lines from stdin to scanf -->
+  <path d="M 170 120 L 205 120" stroke="#38bdf8" stroke-width="2"/>
+
+  <!-- Right: RAM Memory Cells -->
+  <g transform="translate(400, 75)">
+    <rect width="170" height="160" rx="8" fill="#151c33" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="170" height="26" rx="8" fill="#162e2c"/>
+    <text x="85" y="18" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">RAM (Stack Memory)</text>
+
+    <!-- Cell 1: level -->
+    <rect x="12" y="38" width="146" height="50" rx="6" fill="#1e294b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="20" y="55" fill="#94a3b8" font-family="monospace" font-size="9">addr: 0x7ffe40</text>
+    <text x="20" y="75" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="700">level = 10</text>
+    <text x="146" y="68" text-anchor="end" fill="#64748b" font-family="monospace" font-size="9">4 bytes</text>
+
+    <!-- Cell 2: xp -->
+    <rect x="12" y="98" width="146" height="50" rx="6" fill="#1e294b" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="20" y="115" fill="#94a3b8" font-family="monospace" font-size="9">addr: 0x7ffe44</text>
+    <text x="20" y="135" fill="#f472b6" font-family="monospace" font-size="12" font-weight="700">xp = 2500</text>
+    <text x="146" y="128" text-anchor="end" fill="#64748b" font-family="monospace" font-size="9">4 bytes</text>
+  </g>
+
+  <!-- Delivery Arrows into RAM -->
+  <path d="M 275 99 C 320 99, 350 63, 400 63" stroke="#38bdf8" stroke-width="2" fill="none"/>
+  <polygon points="402,63 394,59 394,67" fill="#38bdf8"/>
+
+  <path d="M 345 99 C 365 99, 370 123, 400 123" stroke="#f472b6" stroke-width="2" fill="none"/>
+  <polygon points="402,123 394,119 394,127" fill="#f472b6"/>
+
+  <text x="300" y="272" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Without <tspan fill="#ffd600" font-weight="700">&amp;</tspan>, scanf has nowhere to deposit the data and the OS crashes with a Segmentation Fault.
+  </text>
+</svg>

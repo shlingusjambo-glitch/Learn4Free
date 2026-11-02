@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-u5t" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="220" rx="12" fill="url(#bg-u5t)" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="28" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Unit 5 Capstone: Interactive Trivia Game &amp; Score Tracker</text>
+
+  <!-- Browser App Container -->
+  <g transform="translate(60, 48)">
+    <rect width="480" height="150" rx="8" fill="#020617" stroke="#38bdf8" stroke-width="1.8"/>
+
+    <!-- App Header -->
+    <rect width="480" height="30" rx="8" fill="#1e293b"/>
+    <text x="20" y="20" fill="#38bdf8" font-size="11" font-weight="bold" font-family="sans-serif">🎯 Web Dev Trivia Masters</text>
+    <text x="460" y="20" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="end" font-family="monospace">Score: &lt;span id="score"&gt;200&lt;/span&gt;</text>
+
+    <!-- Question Box -->
+    <rect x="20" y="42" width="440" height="32" rx="4" fill="#0f172a" stroke="#334155"/>
+    <text x="35" y="62" fill="#f8fafc" font-size="10" font-family="sans-serif">Q: Which HTML tag defines the highest level heading?</text>
+
+    <!-- Options Row -->
+    <g transform="translate(20, 82)">
+      <rect width="100" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+      <text x="50" y="18" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">A) &lt;h6&gt;</text>
+    </g>
+    <g transform="translate(130, 82)">
+      <rect width="100" height="28" rx="4" fill="#065f46" fill-opacity="0.3" stroke="#10b981"/>
+      <text x="50" y="18" fill="#34d399" font-size="9" font-weight="bold" text-anchor="middle" font-family="monospace">B) &lt;h1&gt; &check;</text>
+    </g>
+    <g transform="translate(240, 82)">
+      <rect width="100" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+      <text x="50" y="18" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">C) &lt;head&gt;</text>
+    </g>
+    <g transform="translate(350, 82)">
+      <rect width="110" height="28" rx="4" fill="#1e293b" stroke="#334155"/>
+      <text x="55" y="18" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">D) &lt;header&gt;</text>
+    </g>
+
+    <!-- Feedback Banner -->
+    <rect x="20" y="118" width="440" height="22" rx="4" fill="#0369a1" fill-opacity="0.2"/>
+    <text x="240" y="133" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Feedback: Correct! &plus;100 Points &bull; Advancing to Next Question &rarr;</text>
+  </g>
+</svg>

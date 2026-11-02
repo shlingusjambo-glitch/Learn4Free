@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradPa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradPa)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="175" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#34d399" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">POINTER-ARRAY DUALITY</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Train Cars on a Track &bull; arr[i] == *(arr + i)</text>
+
+  <!-- Array Container on Track -->
+  <g transform="translate(35, 75)">
+    <!-- 4 Contiguous Array Cells -->
+    <!-- Cell 0 -->
+    <g transform="translate(0, 30)">
+      <rect width="125" height="90" rx="6" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="62" y="22" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">arr[0] &bull; 0x2000</text>
+      <text x="62" y="52" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="20" font-weight="700">10</text>
+      <text x="62" y="78" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">*(arr + 0)</text>
+    </g>
+
+    <!-- Cell 1 -->
+    <g transform="translate(135, 30)">
+      <rect width="125" height="90" rx="6" fill="#151c33" stroke="#f472b6" stroke-width="1.5"/>
+      <text x="62" y="22" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">arr[1] &bull; 0x2004</text>
+      <text x="62" y="52" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="20" font-weight="700">25</text>
+      <text x="62" y="78" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">*(arr + 1)</text>
+    </g>
+
+    <!-- Cell 2 -->
+    <g transform="translate(270, 30)">
+      <rect width="125" height="90" rx="6" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+      <text x="62" y="22" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">arr[2] &bull; 0x2008</text>
+      <text x="62" y="52" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="20" font-weight="700">5</text>
+      <text x="62" y="78" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">*(arr + 2)</text>
+    </g>
+
+    <!-- Cell 3 -->
+    <g transform="translate(405, 30)">
+      <rect width="125" height="90" rx="6" fill="#151c33" stroke="#34d399" stroke-width="1.5"/>
+      <text x="62" y="22" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">arr[3] &bull; 0x200C</text>
+      <text x="62" y="52" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="20" font-weight="700">40</text>
+      <text x="62" y="78" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">*(arr + 3)</text>
+    </g>
+  </g>
+
+  <!-- Pointer ptr Arrow moving across -->
+  <g transform="translate(97, 210)">
+    <line x1="0" y1="20" x2="0" y2="0" stroke="#ffd600" stroke-width="2.5"/>
+    <polygon points="0,-2 -5,8 5,8" fill="#ffd600"/>
+    <text x="0" y="38" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="12" font-weight="700">int *ptr = arr;</text>
+  </g>
+
+  <g transform="translate(232, 210)">
+    <line x1="0" y1="20" x2="0" y2="0" stroke="#f472b6" stroke-width="2" stroke-dasharray="2,2"/>
+    <polygon points="0,-2 -4,7 4,7" fill="#f472b6"/>
+    <text x="0" y="38" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="10">ptr++ (+4 bytes)</text>
+  </g>
+
+  <text x="300" y="278" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    C automatically multiplies pointer offsets by <tspan fill="#ffd600">sizeof(type)</tspan>: pointer + 1 steps forward 4 bytes in memory.
+  </text>
+</svg>

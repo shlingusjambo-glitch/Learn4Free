@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+  <rect x="24" y="18" width="190" height="26" rx="6" fill="#1e294b"/>
+  <text x="34" y="35" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">UNIT 5 CAPSTONE</text>
+  <text x="576" y="35" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">NASA Pre-Flight Mission Health Check</text>
+
+  <g transform="translate(30, 65)" filter="url(#shadow)">
+    <rect width="540" height="185" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="540" height="26" rx="8" fill="#1b2545"/>
+    <text x="270" y="18" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">Cape Canaveral Launch Diagnostic Matrix</text>
+    <!-- Diagnostic Checklist -->
+    <g transform="translate(20, 42)">
+      <rect width="230" height="120" rx="6" fill="#070a16" stroke="#242d4a"/>
+      <text x="14" y="22" fill="#94a3b8" font-family="monospace" font-size="10">Telemetry Checks:</text>
+      <text x="14" y="44" fill="#34d399" font-family="monospace" font-size="9">&#9745; Oxygen reserves present (-f)</text>
+      <text x="14" y="64" fill="#34d399" font-family="monospace" font-size="9">&#9745; Fuel tanks full (-f)</text>
+      <text x="14" y="84" fill="#ffd600" font-family="monospace" font-size="9">&#9745; Checklist items counted (wc -l)</text>
+      <text x="14" y="104" fill="#38bdf8" font-family="monospace" font-size="9">&#9745; Manifest locked (chmod 444)</text>
+    </g>
+    <!-- Launch Status Box -->
+    <g transform="translate(275, 42)">
+      <rect width="245" height="120" rx="6" fill="#070a16" stroke="#34d399" stroke-width="2"/>
+      <circle cx="35" cy="40" r="14" fill="#10b981"/>
+      <text x="35" y="45" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">&#10003;</text>
+      <text x="60" y="44" fill="#34d399" font-family="system-ui" font-size="14" font-weight="900">MISSION STATUS: GO</text>
+      <text x="20" y="75" fill="#e2e8f0" font-family="monospace" font-size="10">Propulsion &amp; Life Support: GO</text>
+      <text x="20" y="95" fill="#ffd600" font-family="monospace" font-size="10">Checklist items verified: 3</text>
+      <text x="20" y="112" fill="#a3e635" font-family="system-ui" font-size="9">Ready for Saturn V engine ignition!</text>
+    </g>
+  </g>
+  <text x="300" y="275" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Unit 5 Capstone: Combine conditionals, line counting, permissions, and file generation into production automation.
+  </text>
+</svg>

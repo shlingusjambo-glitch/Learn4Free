@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradSp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradSp)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="185" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">STRUCT POINTER &amp; ARROW</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Star Trek Enterprise Command &bull; -&gt;</text>
+
+  <!-- Left: Struct Pointer ship -->
+  <g transform="translate(35, 75)">
+    <rect width="210" height="175" rx="8" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+    <rect width="210" height="28" rx="8" fill="#242338"/>
+    <text x="105" y="19" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">struct Starship *ship</text>
+
+    <text x="15" y="55" fill="#94a3b8" font-family="system-ui" font-size="9">Pointer Memory: 8 bytes</text>
+
+    <rect x="15" y="68" width="180" height="45" rx="4" fill="#1e294b" stroke="#ffd600" stroke-width="1"/>
+    <text x="25" y="88" fill="#94a3b8" font-family="system-ui" font-size="9">Target Address:</text>
+    <text x="25" y="104" fill="#ffd600" font-family="monospace" font-size="13" font-weight="700">0x4000</text>
+
+    <!-- Syntax Equality Badge -->
+    <rect x="15" y="125" width="180" height="42" rx="4" fill="#0f172a"/>
+    <text x="105" y="142" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">ship-&gt;shield</text>
+    <text x="105" y="158" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="10">&equiv; (*ship).shield</text>
+  </g>
+
+  <!-- Giant Arrow in Middle -->
+  <g transform="translate(255, 145)">
+    <line x1="0" y1="15" x2="60" y2="15" stroke="#38bdf8" stroke-width="3"/>
+    <polygon points="62,15 50,8 50,22" fill="#38bdf8"/>
+    <text x="30" y="5" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="16" font-weight="900">-&gt;</text>
+    <text x="30" y="38" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="8">Direct Field Access</text>
+  </g>
+
+  <!-- Right: Starship Instance in RAM -->
+  <g transform="translate(325, 75)">
+    <rect width="240" height="175" rx="8" fill="#151c33" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="240" height="28" rx="8" fill="#162e2c"/>
+    <text x="120" y="19" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">Starship Instance @ 0x4000</text>
+
+    <!-- designation -->
+    <rect x="15" y="42" width="210" height="35" rx="4" fill="#1e294b"/>
+    <text x="25" y="64" fill="#38bdf8" font-family="monospace" font-size="10">designation: <tspan fill="#e2e8f0">"Enterprise"</tspan></text>
+
+    <!-- shield -->
+    <rect x="15" y="85" width="210" height="35" rx="4" fill="#1e294b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="25" y="107" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">ship-&gt;shield: <tspan fill="#e2e8f0">75 &rarr; 100</tspan></text>
+
+    <!-- warp_core -->
+    <rect x="15" y="128" width="210" height="35" rx="4" fill="#1e294b" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="25" y="150" fill="#f472b6" font-family="monospace" font-size="10" font-weight="700">ship-&gt;warp_core: <tspan fill="#e2e8f0">90 &rarr; 60</tspan></text>
+  </g>
+
+  <text x="300" y="278" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Passing an 8-byte pointer avoids copying large struct memory buffers across function calls.
+  </text>
+</svg>

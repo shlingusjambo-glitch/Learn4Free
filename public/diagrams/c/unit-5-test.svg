@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradU5T" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradU5T)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="165" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#ffd600" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">UNIT 5 CAPSTONE</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Apollo 11 &bull; AGC Flight Computer</text>
+
+  <!-- Left: Telemetry Packet Struct Blueprint -->
+  <g transform="translate(30, 70)">
+    <rect width="250" height="185" rx="8" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+    <rect width="250" height="28" rx="8" fill="#242338"/>
+    <text x="125" y="19" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">struct TelemetryPacket</text>
+
+    <text x="15" y="55" fill="#38bdf8" font-family="monospace" font-size="10">char mission_code[16];</text>
+    <text x="15" y="75" fill="#e2e8f0" font-family="monospace" font-size="10">int altitude_km;</text>
+    <text x="15" y="95" fill="#e2e8f0" font-family="monospace" font-size="10">int velocity_kms;</text>
+    <text x="15" y="115" fill="#f472b6" font-family="monospace" font-size="10">int fuel_percent;</text>
+    <text x="15" y="135" fill="#ffd600" font-family="monospace" font-size="10">int status_code; <tspan fill="#64748b">// 1, 2, 3</tspan></text>
+
+    <!-- Calibration routine banner -->
+    <rect x="12" y="148" width="226" height="28" rx="4" fill="#1e294b"/>
+    <text x="125" y="166" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="9">calibrate_telemetry(&amp;packet, ...)</text>
+  </g>
+
+  <!-- Connector -->
+  <path d="M 290 160 L 320 160" stroke="#ffd600" stroke-width="2"/>
+  <polygon points="322,160 314,155 314,165" fill="#ffd600"/>
+
+  <!-- Right: AGC Flight Computer Output Console -->
+  <g transform="translate(330, 65)">
+    <rect width="240" height="195" rx="8" fill="#070a16" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="240" height="28" rx="8" fill="#162e2c"/>
+    <text x="120" y="19" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">AGC FLIGHT TELEMETRY</text>
+
+    <text x="15" y="52" fill="#94a3b8" font-family="monospace" font-size="10">--- FLIGHT TELEMETRY LOG ---</text>
+    <text x="15" y="74" fill="#e2e8f0" font-family="monospace" font-size="10">Mission: <tspan fill="#38bdf8" font-weight="700">Apollo-11</tspan></text>
+    <text x="15" y="96" fill="#e2e8f0" font-family="monospace" font-size="10">Altitude: <tspan fill="#ffd600">384400</tspan> km</text>
+    <text x="15" y="118" fill="#e2e8f0" font-family="monospace" font-size="10">Velocity: <tspan fill="#38bdf8">11</tspan> km/s</text>
+    <text x="15" y="140" fill="#e2e8f0" font-family="monospace" font-size="10">Fuel: <tspan fill="#f472b6">85%</tspan></text>
+    <line x1="15" y1="152" x2="225" y2="152" stroke="#334155" stroke-dasharray="2,2"/>
+    <text x="15" y="174" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">Status: NOMINAL</text>
+  </g>
+
+  <text x="300" y="282" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Synthesis of structs, pointers, strings, conditionals, and functions in a mission-critical system.
+  </text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">CROSS-SITE SCRIPTING (XSS) &amp; HTML ESCAPING</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Defending web pages: convert executable HTML characters into inert text entities.</text>
+
+    <!-- Side-by-side: Raw payload vs Escaped -->
+    <g transform="translate(30, 80)">
+      <!-- Unescaped script -->
+      <rect x="0" y="0" width="260" height="185" rx="8" fill="url(#cardGrad)" stroke="#f87171" stroke-width="1.5"/>
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f87171">RAW UNESCAPED (EXPLOIT)</text>
+      <rect x="15" y="38" width="230" height="34" rx="4" fill="#0c1124"/>
+      <text x="22" y="59" font-family="monospace" font-size="10" fill="#f87171">&lt;script&gt;stealCookie()&lt;/script&gt;</text>
+      <text x="15" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Browser parses as executable code:</text>
+      <rect x="15" y="105" width="230" height="30" rx="4" fill="#7f1d1d"/>
+      <text x="130" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">COOKIE HIJACKED!</text>
+      <text x="15" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#f87171">MySpace Samy Worm infected 1M users in hours.</text>
+
+      <!-- Escaped Entities -->
+      <rect x="280" y="0" width="260" height="185" rx="8" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="295" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#34d399">HTML ESCAPED ENTITIES</text>
+      <rect x="295" y="38" width="230" height="34" rx="4" fill="#0c1124"/>
+      <text x="302" y="59" font-family="monospace" font-size="10" fill="#34d399">&amp;lt;script&amp;gt;stealCookie()...</text>
+      <text x="295" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Browser displays literal plain text:</text>
+      <rect x="295" y="105" width="230" height="30" rx="4" fill="#064e3b"/>
+      <text x="410" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#6ee7b7">HARMLESS VISUAL TEXT</text>
+      <text x="295" y="156" font-family="system-ui, sans-serif" font-size="10" fill="#34d399">&amp; &lt; &gt; " ' are neutralized with html.escape().</text>
+    </g>
+  
+</svg>

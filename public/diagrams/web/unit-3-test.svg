@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-u3t" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="220" rx="12" fill="url(#bg-u3t)" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="28" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Unit 3 Test: Spotify Playlist Queue Filter &amp; Duration Calculator</text>
+
+  <!-- Step 1: Raw Queue -->
+  <g transform="translate(30, 52)">
+    <rect width="145" height="135" rx="8" fill="#020617" stroke="#38bdf8" stroke-width="1.8"/>
+    <text x="72" y="25" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">1. Raw Queue Array</text>
+    <rect x="10" y="35" width="125" height="24" rx="4" fill="#1e293b"/>
+    <text x="72" y="51" fill="#cbd5e1" font-size="9" text-anchor="middle" font-family="sans-serif">Song 1 (210s) [keep]</text>
+    <rect x="10" y="65" width="125" height="24" rx="4" fill="#3f121d" stroke="#f43f5e"/>
+    <text x="72" y="81" fill="#fb7185" font-size="9" text-anchor="middle" font-family="sans-serif">Song 2 (skipped &cross;)</text>
+    <rect x="10" y="95" width="125" height="24" rx="4" fill="#1e293b"/>
+    <text x="72" y="111" fill="#cbd5e1" font-size="9" text-anchor="middle" font-family="sans-serif">Song 3 (180s) [keep]</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 185 120 L 210 120" stroke="#f59e0b" stroke-width="2.5"/>
+  <polygon points="210,116 218,120 210,124" fill="#f59e0b"/>
+
+  <!-- Step 2: Loop & Filter Accumulator -->
+  <g transform="translate(225, 52)">
+    <rect width="165" height="135" rx="8" fill="#020617" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="82" y="25" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">2. Filter &amp; Accumulate</text>
+    <text x="82" y="50" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">totalSeconds += duration</text>
+    <rect x="12" y="65" width="141" height="55" rx="4" fill="#1e293b"/>
+    <text x="82" y="85" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle" font-family="monospace">minutes = floor(sec / 60)</text>
+    <text x="82" y="105" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle" font-family="monospace">seconds = sec % 60</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 400 120 L 425 120" stroke="#10b981" stroke-width="2.5"/>
+  <polygon points="425,116 433,120 425,124" fill="#10b981"/>
+
+  <!-- Step 3: Formatted Output -->
+  <g transform="translate(435, 52)">
+    <rect width="135" height="135" rx="8" fill="#020617" stroke="#10b981" stroke-width="1.8"/>
+    <text x="67" y="25" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">3. Queue Summary</text>
+    <rect x="10" y="38" width="115" height="82" rx="4" fill="#1e293b"/>
+    <text x="67" y="60" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle" font-family="monospace">Queue: 2 tracks</text>
+    <text x="67" y="80" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle" font-family="monospace">Total: 6m 30s</text>
+    <text x="67" y="100" fill="#a855f7" font-size="9" text-anchor="middle" font-family="monospace">Status: Ready</text>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-html-tags" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="box-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="220" rx="12" fill="url(#bg-html-tags)" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="32" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Anatomy of an HTML Element (LEGO Brick Analogy)</text>
+
+  <!-- Opening Tag Box -->
+  <g transform="translate(30, 60)">
+    <rect width="160" height="115" rx="8" fill="url(#box-grad)" stroke="#38bdf8" stroke-width="1.8"/>
+    <circle cx="20" cy="20" r="10" fill="#0284c7"/>
+    <text x="20" y="24" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">1</text>
+    <text x="85" y="45" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle" font-family="monospace">&lt;h1 class="hero"&gt;</text>
+    <rect x="15" y="65" width="130" height="36" rx="4" fill="#020617" stroke="#1e293b"/>
+    <text x="80" y="80" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">OPENING TAG</text>
+    <text x="80" y="94" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Tag Name + Attribute</text>
+  </g>
+
+  <!-- Flow 1 -->
+  <path d="M 195 118 L 220 118" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="220,114 228,118 220,122" fill="#38bdf8"/>
+
+  <!-- Content Box -->
+  <g transform="translate(230, 60)">
+    <rect width="150" height="115" rx="8" fill="url(#box-grad)" stroke="#f59e0b" stroke-width="1.8"/>
+    <circle cx="20" cy="20" r="10" fill="#d97706"/>
+    <text x="20" y="24" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">2</text>
+    <text x="75" y="45" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle" font-family="monospace">Avengers Assemble</text>
+    <rect x="12" y="65" width="126" height="36" rx="4" fill="#020617" stroke="#1e293b"/>
+    <text x="75" y="80" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">CONTENT</text>
+    <text x="75" y="94" fill="#cbd5e1" font-size="9" text-anchor="middle" font-family="sans-serif">Text / Nested Elements</text>
+  </g>
+
+  <!-- Flow 2 -->
+  <path d="M 385 118 L 410 118" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="410,114 418,118 410,122" fill="#f59e0b"/>
+
+  <!-- Closing Tag Box -->
+  <g transform="translate(420, 60)">
+    <rect width="150" height="115" rx="8" fill="url(#box-grad)" stroke="#34d399" stroke-width="1.8"/>
+    <circle cx="20" cy="20" r="10" fill="#059669"/>
+    <text x="20" y="24" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">3</text>
+    <text x="75" y="45" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle" font-family="monospace">&lt;/h1&gt;</text>
+    <rect x="12" y="65" width="126" height="36" rx="4" fill="#020617" stroke="#1e293b"/>
+    <text x="75" y="80" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">CLOSING TAG</text>
+    <text x="75" y="94" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Forward Slash / Ends Brick</text>
+  </g>
+</svg>

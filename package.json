@@ -1,0 +1,13 @@
+{
+  "name": "learn4free",
+  "version": "0.1.0",
+  "description": "Free, open source, account-free alternative to paywalled coding education sites.",
+  "license": "GPL-2.0-only",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/verify-solutions.js"
+  },
+  "engines": { "node": ">=18" }
+}

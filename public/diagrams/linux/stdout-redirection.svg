@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+  <rect x="24" y="18" width="190" height="26" rx="6" fill="#1e294b"/>
+  <text x="34" y="35" fill="#ffd600" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">STREAM REDIRECTION</text>
+  <text x="576" y="35" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">> Overwrite vs >> Append</text>
+
+  <!-- Single Angle Bracket > -->
+  <g transform="translate(30, 65)" filter="url(#shadow)">
+    <rect width="250" height="185" rx="8" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+    <rect width="250" height="26" rx="8" fill="#242338"/>
+    <text x="125" y="18" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">&gt; Overwrite (Clobber)</text>
+    <rect x="16" y="45" width="218" height="28" rx="4" fill="#1e294b"/>
+    <text x="24" y="63" fill="#ffd600" font-family="monospace" font-size="10">echo &quot;Hello&quot; &gt; file.txt</text>
+    <!-- Diagram -->
+    <rect x="25" y="90" width="70" height="35" rx="4" fill="#1e294b" stroke="#ffd600"/>
+    <text x="60" y="112" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="10">stdout</text>
+    <path d="M 100 107 L 140 107" stroke="#ffd600" stroke-width="2"/>
+    <polygon points="144,107 136,102 136,112" fill="#ffd600"/>
+    <rect x="150" y="85" width="80" height="50" rx="4" fill="#070a16" stroke="#ffd600"/>
+    <text x="190" y="105" text-anchor="middle" fill="#ef4444" font-family="system-ui" font-size="8">&#128465; Wipes old</text>
+    <text x="190" y="125" text-anchor="middle" fill="#38bdf8" font-family="system-ui" font-size="9" font-weight="700">New content</text>
+    <text x="125" y="160" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Destination file is reset to 0 bytes first</text>
+  </g>
+  <!-- Double Angle Bracket >> -->
+  <g transform="translate(310, 65)" filter="url(#shadow)">
+    <rect width="260" height="185" rx="8" fill="#151c33" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="260" height="26" rx="8" fill="#122d25"/>
+    <text x="130" y="18" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">&gt;&gt; Append (Preserve Old)</text>
+    <rect x="16" y="45" width="228" height="28" rx="4" fill="#1e294b"/>
+    <text x="24" y="63" fill="#34d399" font-family="monospace" font-size="10">echo &quot;More&quot; &gt;&gt; file.txt</text>
+    <!-- Diagram -->
+    <rect x="25" y="90" width="70" height="35" rx="4" fill="#1e294b" stroke="#34d399"/>
+    <text x="60" y="112" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="10">stdout</text>
+    <path d="M 100 107 L 140 107" stroke="#34d399" stroke-width="2"/>
+    <polygon points="144,107 136,102 136,112" fill="#34d399"/>
+    <rect x="150" y="85" width="85" height="50" rx="4" fill="#070a16" stroke="#34d399"/>
+    <text x="192" y="105" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="8">Line 1: Hello</text>
+    <text x="192" y="125" text-anchor="middle" fill="#a3e635" font-family="system-ui" font-size="9" font-weight="700">+ Line 2: More</text>
+    <text x="130" y="160" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Appends seamlessly to the bottom</text>
+  </g>
+  <text x="300" y="275" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Single <tspan fill="#ffd600">&gt;</tspan> overwrites and clears the file; double <tspan fill="#34d399">&gt;&gt;</tspan> adds new lines to the end.
+  </text>
+</svg>

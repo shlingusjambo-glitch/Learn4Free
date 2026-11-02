@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradU3T" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradU3T)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="150" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#ffd600" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">UNIT 3 CAPSTONE</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Avengers Threat Matrix</text>
+
+  <!-- Flow pipeline: 3 interconnected function modules -->
+
+  <!-- Module 1: calculate_threat -->
+  <g transform="translate(30, 75)">
+    <rect width="165" height="175" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="165" height="28" rx="8" fill="#1b2545"/>
+    <text x="82" y="19" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="700">calculate_threat()</text>
+
+    <text x="12" y="52" fill="#94a3b8" font-family="system-ui" font-size="9">Intake Raw Stats:</text>
+    <text x="12" y="70" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; STR * 1.5</text>
+    <text x="12" y="88" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; SPD * 1.2</text>
+    <text x="12" y="106" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; INT * 2.0</text>
+
+    <rect x="10" y="125" width="145" height="35" rx="4" fill="#1e294b"/>
+    <text x="82" y="147" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">returns double</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <line x1="195" y1="162" x2="225" y2="162" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="225,162 217,157 217,167" fill="#38bdf8"/>
+
+  <!-- Module 2: classify_tier -->
+  <g transform="translate(230, 75)">
+    <rect width="155" height="175" rx="8" fill="#151c33" stroke="#f472b6" stroke-width="1.5"/>
+    <rect width="155" height="28" rx="8" fill="#2d1a29"/>
+    <text x="77" y="19" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="10" font-weight="700">classify_tier()</text>
+
+    <text x="12" y="52" fill="#94a3b8" font-family="system-ui" font-size="9">Threshold Mapping:</text>
+    <text x="12" y="72" fill="#ffd600" font-family="monospace" font-size="10">&gt;= 100.0 &rarr; 'S'</text>
+    <text x="12" y="92" fill="#38bdf8" font-family="monospace" font-size="10">&gt;= 75.0 &rarr; 'A'</text>
+    <text x="12" y="112" fill="#34d399" font-family="monospace" font-size="10">&gt;= 50.0 &rarr; 'B'</text>
+    <text x="12" y="132" fill="#94a3b8" font-family="monospace" font-size="10">else &rarr; 'C'</text>
+
+    <rect x="10" y="145" width="135" height="22" rx="4" fill="#1e294b"/>
+    <text x="77" y="160" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="10" font-weight="700">returns char</text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <line x1="385" y1="162" x2="415" y2="162" stroke="#f472b6" stroke-width="2"/>
+  <polygon points="415,162 407,157 407,167" fill="#f472b6"/>
+
+  <!-- Module 3: print_hero_dossier -->
+  <g transform="translate(420, 75)">
+    <rect width="150" height="175" rx="8" fill="#070a16" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="150" height="28" rx="8" fill="#162e2c"/>
+    <text x="75" y="19" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">print_dossier()</text>
+
+    <text x="10" y="52" fill="#94a3b8" font-family="monospace" font-size="9">--- HERO DOSSIER ---</text>
+    <text x="10" y="74" fill="#e2e8f0" font-family="monospace" font-size="9">Stats: STR | SPD | INT</text>
+    <text x="10" y="98" fill="#ffd600" font-family="monospace" font-size="9">Threat Index: %.1f</text>
+    <text x="10" y="122" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">Rank: Tier %c</text>
+
+    <rect x="8" y="145" width="134" height="22" rx="4" fill="#1e294b"/>
+    <text x="75" y="160" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="9">returns void</text>
+  </g>
+
+  <text x="300" y="280" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Modular functional decomposition: each helper does exactly one job cleanly.
+  </text>
+</svg>

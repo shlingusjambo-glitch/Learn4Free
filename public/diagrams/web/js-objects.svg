@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-obj" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="220" rx="12" fill="url(#bg-obj)" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="28" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Objects: Character Sheets with Properties &amp; Methods</text>
+
+  <!-- Object Card (Pikachu) -->
+  <g transform="translate(40, 48)">
+    <rect width="250" height="150" rx="8" fill="#020617" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="15" y="12" width="220" height="25" rx="4" fill="#1e293b"/>
+    <text x="125" y="29" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle" font-family="monospace">const pikachu = { ... }</text>
+
+    <!-- Properties -->
+    <text x="25" y="58" fill="#38bdf8" font-size="11" font-family="monospace">name: "Pikachu",</text>
+    <text x="25" y="76" fill="#38bdf8" font-size="11" font-family="monospace">type: "Electric",</text>
+    <text x="25" y="94" fill="#38bdf8" font-size="11" font-family="monospace">hp: 100,</text>
+
+    <!-- Method -->
+    <rect x="18" y="105" width="214" height="32" rx="4" fill="#0f172a" stroke="#a855f7"/>
+    <text x="125" y="125" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle" font-family="monospace">thunderbolt() { ... }</text>
+  </g>
+
+  <!-- Right: Accessing Notation -->
+  <g transform="translate(320, 48)">
+    <rect width="240" height="150" rx="8" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="26" fill="#34d399" font-size="12" font-weight="bold" font-family="sans-serif">Reading &amp; Calling Members</text>
+
+    <rect x="15" y="38" width="210" height="44" rx="4" fill="#1e293b"/>
+    <text x="25" y="55" fill="#38bdf8" font-size="10" font-weight="bold" font-family="monospace">pikachu.hp // 100 (Dot)</text>
+    <text x="25" y="72" fill="#94a3b8" font-size="9" font-family="monospace">pikachu["hp"] // Bracket notation</text>
+
+    <rect x="15" y="92" width="210" height="44" rx="4" fill="#1e293b"/>
+    <text x="25" y="110" fill="#c084fc" font-size="10" font-weight="bold" font-family="monospace">pikachu.thunderbolt();</text>
+    <text x="25" y="126" fill="#94a3b8" font-size="9" font-family="sans-serif">Executes method via this.hp</text>
+  </g>
+</svg>

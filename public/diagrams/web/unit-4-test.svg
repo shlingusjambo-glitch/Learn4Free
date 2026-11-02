@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-u4t" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="220" rx="12" fill="url(#bg-u4t)" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="28" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Unit 4 Test: Video Game Inventory &amp; Stat Powerup Pipeline</text>
+
+  <!-- Diagram Flow -->
+  <g transform="translate(30, 50)">
+    <!-- Stage 1 -->
+    <rect width="115" height="135" rx="6" fill="#020617" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="57" y="24" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">1. Gear Bag</text>
+    <rect x="8" y="34" width="99" height="22" rx="3" fill="#1e293b"/>
+    <text x="57" y="49" fill="#cbd5e1" font-size="8" text-anchor="middle" font-family="sans-serif">Rusty Dagger (Common)</text>
+    <rect x="8" y="60" width="99" height="22" rx="3" fill="#1e293b"/>
+    <text x="57" y="75" fill="#f59e0b" font-size="8" text-anchor="middle" font-family="sans-serif">Excalibur (Legendary)</text>
+    <rect x="8" y="86" width="99" height="22" rx="3" fill="#1e293b"/>
+    <text x="57" y="101" fill="#f59e0b" font-size="8" text-anchor="middle" font-family="sans-serif">Dragon Bow (Legendary)</text>
+  </g>
+
+  <path d="M 150 115 L 170 115" stroke="#f59e0b" stroke-width="2"/>
+  <polygon points="170,111 178,115 170,119" fill="#f59e0b"/>
+
+  <!-- Stage 2 -->
+  <g transform="translate(180, 50)">
+    <rect width="115" height="135" rx="6" fill="#020617" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="57" y="24" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">2. .filter()</text>
+    <text x="57" y="45" fill="#cbd5e1" font-size="8" text-anchor="middle" font-family="sans-serif">Weed out commons</text>
+    <rect x="8" y="60" width="99" height="50" rx="3" fill="#1e293b"/>
+    <text x="57" y="80" fill="#34d399" font-size="8" text-anchor="middle" font-family="monospace">rarity ===</text>
+    <text x="57" y="96" fill="#34d399" font-size="8" text-anchor="middle" font-family="monospace">&apos;legendary&apos;</text>
+  </g>
+
+  <path d="M 300 115 L 320 115" stroke="#a855f7" stroke-width="2"/>
+  <polygon points="320,111 328,115 320,119" fill="#a855f7"/>
+
+  <!-- Stage 3 -->
+  <g transform="translate(330, 50)">
+    <rect width="115" height="135" rx="6" fill="#020617" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="57" y="24" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">3. .map()</text>
+    <text x="57" y="45" fill="#cbd5e1" font-size="8" text-anchor="middle" font-family="sans-serif">Apply potion buff</text>
+    <rect x="8" y="60" width="99" height="50" rx="3" fill="#1e293b"/>
+    <text x="57" y="80" fill="#c084fc" font-size="8" text-anchor="middle" font-family="monospace">atk * 1.5</text>
+    <text x="57" y="96" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="sans-serif">+ Enchantment</text>
+  </g>
+
+  <path d="M 450 115 L 470 115" stroke="#10b981" stroke-width="2"/>
+  <polygon points="470,111 478,115 470,119" fill="#10b981"/>
+
+  <!-- Stage 4 -->
+  <g transform="translate(480, 50)">
+    <rect width="90" height="135" rx="6" fill="#020617" stroke="#10b981" stroke-width="1.5"/>
+    <text x="45" y="24" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">4. .reduce()</text>
+    <text x="45" y="45" fill="#cbd5e1" font-size="8" text-anchor="middle" font-family="sans-serif">Total Score</text>
+    <rect x="8" y="60" width="74" height="50" rx="3" fill="#065f46" fill-opacity="0.3" stroke="#059669"/>
+    <text x="45" y="90" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle" font-family="monospace">4,850</text>
+  </g>
+</svg>

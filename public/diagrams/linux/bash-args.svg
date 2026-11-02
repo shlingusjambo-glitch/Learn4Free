@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+  <rect x="24" y="18" width="190" height="26" rx="6" fill="#1e294b"/>
+  <text x="34" y="35" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">COMMAND LINE ARGUMENTS</text>
+  <text x="576" y="35" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Positional Parameters $1, $2, $#</text>
+
+  <g transform="translate(30, 65)" filter="url(#shadow)">
+    <rect width="540" height="185" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="540" height="26" rx="8" fill="#1b2545"/>
+    <text x="270" y="18" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">./script.sh &quot;Recon&quot; &quot;Falcon&quot;</text>
+    <!-- Command elements -->
+    <g transform="translate(35, 45)">
+      <!-- $0 -->
+      <rect x="0" y="0" width="120" height="40" rx="4" fill="#1e294b" stroke="#475569"/>
+      <text x="60" y="25" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="12">./script.sh</text>
+      <text x="60" y="55" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">$0 (Script)</text>
+      <!-- $1 -->
+      <rect x="150" y="0" width="130" height="40" rx="4" fill="#1e294b" stroke="#38bdf8"/>
+      <text x="215" y="25" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="12">&quot;Recon&quot;</text>
+      <text x="215" y="55" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">$1 (Param 1)</text>
+      <!-- $2 -->
+      <rect x="310" y="0" width="130" height="40" rx="4" fill="#1e294b" stroke="#34d399"/>
+      <text x="375" y="25" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="12">&quot;Falcon&quot;</text>
+      <text x="375" y="55" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="700">$2 (Param 2)</text>
+    </g>
+    <!-- Parameter Count Banner -->
+    <g transform="translate(60, 120)">
+      <rect width="420" height="40" rx="6" fill="#070a16" stroke="#242d4a"/>
+      <text x="210" y="25" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="12" font-weight="700">$# = 2 (Total Count of Arguments Passed)</text>
+    </g>
+  </g>
+  <text x="300" y="275" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    Access input flags via <tspan fill="#38bdf8">$1</tspan>, <tspan fill="#34d399">$2</tspan>, and check the total number of arguments with <tspan fill="#ffd600">$#</tspan>.
+  </text>
+</svg>

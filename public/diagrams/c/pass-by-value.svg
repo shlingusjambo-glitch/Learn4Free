@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradPbv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradPbv)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="170" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#f472b6" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">PASS-BY-VALUE</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">The Photocopier Rule</text>
+
+  <!-- Left: main() Stack Frame -->
+  <g transform="translate(35, 75)">
+    <rect width="220" height="180" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="220" height="28" rx="8" fill="#1b2545"/>
+    <text x="110" y="19" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">main() Stack Frame</text>
+
+    <!-- Variable hp box -->
+    <rect x="15" y="45" width="190" height="55" rx="6" fill="#1e294b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="25" y="65" fill="#94a3b8" font-family="monospace" font-size="9">Address: 0x7ffe10</text>
+    <text x="25" y="86" fill="#34d399" font-family="monospace" font-size="14" font-weight="700">int hp = 100;</text>
+
+    <!-- Note -->
+    <rect x="15" y="115" width="190" height="48" rx="4" fill="#0f172a"/>
+    <text x="105" y="134" text-anchor="middle" fill="#38bdf8" font-family="system-ui" font-size="10" font-weight="600">ORIGINAL DOCUMENT</text>
+    <text x="105" y="150" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Safe from callee tampering</text>
+  </g>
+
+  <!-- Middle: Photocopier Arrow -->
+  <g transform="translate(265, 120)">
+    <circle cx="35" cy="35" r="24" fill="#1e294b" stroke="#ffd600" stroke-width="1.5"/>
+    <text x="35" y="40" text-anchor="middle" fill="#ffd600" font-family="system-ui" font-size="11" font-weight="700">COPY</text>
+    <path d="M -10 35 L 5 35" stroke="#ffd600" stroke-width="2"/>
+    <path d="M 65 35 L 80 35" stroke="#ffd600" stroke-width="2"/>
+    <polygon points="80,35 72,30 72,40" fill="#ffd600"/>
+    <text x="35" y="75" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Values are duplicated</text>
+  </g>
+
+  <!-- Right: apply_damage() Stack Frame -->
+  <g transform="translate(345, 75)">
+    <rect width="220" height="180" rx="8" fill="#151c33" stroke="#f472b6" stroke-width="1.5"/>
+    <rect width="220" height="28" rx="8" fill="#2d1a29"/>
+    <text x="110" y="19" text-anchor="middle" fill="#f472b6" font-family="monospace" font-size="11" font-weight="700">apply_damage() Stack</text>
+
+    <!-- Parameter hp copy box -->
+    <rect x="15" y="45" width="190" height="55" rx="6" fill="#1e294b" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="25" y="65" fill="#94a3b8" font-family="monospace" font-size="9">Address: 0x7ffd80 (DIFFERENT!)</text>
+    <text x="25" y="86" fill="#f472b6" font-family="monospace" font-size="12" font-weight="700">param hp: 100 &rarr; 65</text>
+
+    <!-- Note -->
+    <rect x="15" y="115" width="190" height="48" rx="4" fill="#0f172a"/>
+    <text x="105" y="134" text-anchor="middle" fill="#f472b6" font-family="system-ui" font-size="10" font-weight="600">PHOTOCOPIED SHEET</text>
+    <text x="105" y="150" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Destroyed when function exits</text>
+  </g>
+
+  <text x="300" y="280" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    C never passes original variables into functions; it always creates a local duplicate.
+  </text>
+</svg>

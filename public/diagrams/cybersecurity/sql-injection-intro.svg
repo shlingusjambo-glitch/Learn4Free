@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">SQL INJECTION: BREAKING PARSER SYNTAX</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">XKCD 327 (Little Bobby Tables): User input escapes string delimiters and rewrites SQL code.</text>
+
+    <!-- Vulnerable String Concatenation -->
+    <g transform="translate(30, 80)">
+      <rect width="540" height="185" rx="8" fill="url(#cardGrad)" stroke="#f87171" stroke-width="1.5"/>
+
+      <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f87171">VULNERABLE QUERY CONCATENATION:</text>
+      <rect x="20" y="40" width="500" height="34" rx="4" fill="#0c1124"/>
+      <text x="30" y="62" font-family="monospace" font-size="11" fill="#e2e8f0">query = "SELECT * FROM users WHERE user = '" + input + "' AND pass = '" + pwd + "'"</text>
+
+      <text x="20" y="98" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffd600">ATTACKER INJECTS: <tspan font-family="monospace" fill="#f87171">' OR '1'='1</tspan></text>
+      <rect x="20" y="110" width="500" height="38" rx="4" fill="#0c1124" stroke="#f87171" stroke-width="1"/>
+      <text x="30" y="133" font-family="monospace" font-size="11">
+        <tspan fill="#94a3b8">SELECT * FROM users WHERE user = '</tspan>
+        <tspan fill="#f87171" font-weight="700">' OR '1'='1</tspan>
+        <tspan fill="#94a3b8">' AND pass = '...'</tspan>
+      </text>
+
+      <text x="20" y="172" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Outcome: '1'='1' evaluates to TRUE for all rows! Attacker logs in without a password.</text>
+    </g>
+  
+</svg>

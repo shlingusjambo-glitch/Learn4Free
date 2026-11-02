@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <!-- Title Badge -->
+  <rect x="24" y="20" width="160" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1">C BUILD PIPELINE</text>
+
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="12">1972 &bull; Bell Labs &bull; Dennis Ritchie</text>
+
+  <!-- Node 1: Source File -->
+  <g transform="translate(30, 80)" filter="url(#shadow)">
+    <rect width="130" height="150" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="130" height="28" rx="8" fill="#1b2545"/>
+    <text x="65" y="19" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="700">main.c</text>
+    <text x="14" y="52" fill="#94a3b8" font-family="monospace" font-size="9">#include &lt;stdio.h&gt;</text>
+    <text x="14" y="70" fill="#f472b6" font-family="monospace" font-size="9">int main(void) {</text>
+    <text x="22" y="88" fill="#a3e635" font-family="monospace" font-size="9">printf(...);</text>
+    <text x="22" y="106" fill="#fbbf24" font-family="monospace" font-size="9">return 0;</text>
+    <text x="14" y="124" fill="#f472b6" font-family="monospace" font-size="9">}</text>
+    <text x="65" y="142" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="8">HUMAN CODE</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 170 155 L 210 155" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
+  <polygon points="212,155 204,150 204,160" fill="#38bdf8"/>
+  <text x="190" y="145" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="10">Compile</text>
+
+  <!-- Node 2: GCC Compiler Engine -->
+  <g transform="translate(220, 80)" filter="url(#shadow)">
+    <rect width="150" height="150" rx="8" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+    <rect width="150" height="28" rx="8" fill="#242338"/>
+    <text x="75" y="19" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="12" font-weight="700">gcc main.c</text>
+    <circle cx="75" cy="65" r="22" fill="#1b2545" stroke="#ffd600" stroke-width="1.5"/>
+    <text x="75" y="70" text-anchor="middle" fill="#ffd600" font-family="system-ui" font-size="16" font-weight="900">&#9881;</text>
+    <text x="75" y="105" text-anchor="middle" fill="#e2e8f0" font-family="system-ui" font-size="11" font-weight="600">Translator &amp; Linker</text>
+    <text x="75" y="122" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Turns C into CPU</text>
+    <text x="75" y="135" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9">Machine Instructions</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 380 155 L 420 155" stroke="#34d399" stroke-width="2"/>
+  <polygon points="422,155 414,150 414,160" fill="#34d399"/>
+  <text x="400" y="145" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="10">Execute</text>
+
+  <!-- Node 3: Terminal Output -->
+  <g transform="translate(430, 80)" filter="url(#shadow)">
+    <rect width="140" height="150" rx="8" fill="#070a16" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="140" height="28" rx="8" fill="#121a2d"/>
+    <circle cx="16" cy="14" r="4" fill="#ef4444"/>
+    <circle cx="28" cy="14" r="4" fill="#f59e0b"/>
+    <circle cx="40" cy="14" r="4" fill="#10b981"/>
+    <text x="85" y="19" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11">stdout</text>
+    <text x="14" y="60" fill="#64748b" font-family="monospace" font-size="10">$ ./main</text>
+    <text x="14" y="85" fill="#a3e635" font-family="monospace" font-size="11" font-weight="700">Hello, World!</text>
+    <text x="14" y="112" fill="#64748b" font-family="monospace" font-size="9">$ echo $?</text>
+    <text x="14" y="130" fill="#38bdf8" font-family="monospace" font-size="10">0 (Success)</text>
+  </g>
+
+  <!-- Footer Tip -->
+  <text x="300" y="272" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11">
+    <tspan fill="#38bdf8">printf()</tspan> writes bytes to standard output; <tspan fill="#fbbf24">return 0</tspan> signals a clean exit to the OS.
+  </text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">IP ADDRESSES &amp; PORT NUMBERS</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">IP = Street address of the building. Port = Specific apartment or office door.</text>
+
+    <!-- Apartment Analogy Graphic -->
+    <g transform="translate(30, 80)">
+      <rect width="540" height="185" rx="8" fill="url(#cardGrad)" stroke="#253158" stroke-width="1.5"/>
+
+      <!-- IP Address Sign -->
+      <rect x="20" y="18" width="220" height="34" rx="4" fill="#0c1124" stroke="#38bdf8" stroke-width="1"/>
+      <text x="35" y="40" font-family="monospace" font-size="12" font-weight="700" fill="#38bdf8">IP: 192.168.1.50 (Host)</text>
+
+      <!-- Port Doors -->
+      <g transform="translate(20, 65)">
+        <!-- Port 22 -->
+        <rect x="0" y="0" width="115" height="95" rx="4" fill="#0c1124" stroke="#ffd600" stroke-width="1.5"/>
+        <text x="10" y="22" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffd600">PORT 22</text>
+        <text x="10" y="42" font-family="system-ui, sans-serif" font-size="10" fill="#e2e8f0">SSH Remote</text>
+        <text x="10" y="60" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Encrypted Shell</text>
+        <rect x="10" y="70" width="95" height="16" rx="2" fill="#ffd600" fill-opacity="0.2"/>
+        <text x="57" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#ffd600">ADMIN ACCESS</text>
+
+        <!-- Port 80 -->
+        <rect x="130" y="0" width="115" height="95" rx="4" fill="#0c1124" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="140" y="22" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">PORT 80</text>
+        <text x="140" y="42" font-family="system-ui, sans-serif" font-size="10" fill="#e2e8f0">HTTP Web</text>
+        <text x="140" y="60" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Cleartext Traffic</text>
+        <rect x="140" y="70" width="95" height="16" rx="2" fill="#38bdf8" fill-opacity="0.2"/>
+        <text x="187" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#38bdf8">PUBLIC LOBBY</text>
+
+        <!-- Port 443 -->
+        <rect x="260" y="0" width="115" height="95" rx="4" fill="#0c1124" stroke="#34d399" stroke-width="1.5"/>
+        <text x="270" y="22" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#34d399">PORT 443</text>
+        <text x="270" y="42" font-family="system-ui, sans-serif" font-size="10" fill="#e2e8f0">HTTPS Web</text>
+        <text x="270" y="60" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">TLS Encryption</text>
+        <rect x="270" y="70" width="95" height="16" rx="2" fill="#34d399" fill-opacity="0.2"/>
+        <text x="317" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#34d399">SECURE VAULT</text>
+
+        <!-- Port 53 -->
+        <rect x="390" y="0" width="110" height="95" rx="4" fill="#0c1124" stroke="#c084fc" stroke-width="1.5"/>
+        <text x="400" y="22" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#c084fc">PORT 53</text>
+        <text x="400" y="42" font-family="system-ui, sans-serif" font-size="10" fill="#e2e8f0">DNS Resolver</text>
+        <text x="400" y="60" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Name Lookup</text>
+        <rect x="400" y="70" width="90" height="16" rx="2" fill="#c084fc" fill-opacity="0.2"/>
+        <text x="445" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#c084fc">DIRECTORY</text>
+      </g>
+    </g>
+  
+</svg>

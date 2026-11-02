@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradPm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#141c33"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="300" rx="12" fill="url(#bgGradPm)"/>
+  <rect width="598" height="298" x="1" y="1" rx="11" fill="none" stroke="#242d4a" stroke-width="1.5"/>
+
+  <rect x="24" y="20" width="180" height="28" rx="6" fill="#1e294b"/>
+  <text x="34" y="39" fill="#f472b6" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">POINTER MUTATION</text>
+  <text x="576" y="39" text-anchor="end" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Freaky Friday Swap Mechanic</text>
+
+  <!-- Left: main() variables -->
+  <g transform="translate(35, 75)">
+    <rect width="210" height="175" rx="8" fill="#151c33" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="210" height="28" rx="8" fill="#1b2545"/>
+    <text x="105" y="19" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">main() Stack Frame</text>
+
+    <!-- Variable a -->
+    <rect x="15" y="42" width="180" height="50" rx="4" fill="#1e294b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="25" y="60" fill="#94a3b8" font-family="monospace" font-size="9">addr: 0x7ffe20</text>
+    <text x="25" y="78" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="700">int a = 10 &rarr; 20</text>
+
+    <!-- Variable b -->
+    <rect x="15" y="102" width="180" height="50" rx="4" fill="#1e294b" stroke="#f472b6" stroke-width="1"/>
+    <text x="25" y="120" fill="#94a3b8" font-family="monospace" font-size="9">addr: 0x7ffe24</text>
+    <text x="25" y="138" fill="#f472b6" font-family="monospace" font-size="12" font-weight="700">int b = 20 &rarr; 10</text>
+
+    <text x="105" y="165" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">swap(&amp;a, &amp;b);</text>
+  </g>
+
+  <!-- Middle: Cross Pointers Transfer -->
+  <g transform="translate(245, 110)">
+    <path d="M 0 0 C 40 0, 60 50, 105 50" stroke="#38bdf8" stroke-width="2" fill="none"/>
+    <polygon points="105,50 97,45 97,55" fill="#38bdf8"/>
+
+    <path d="M 0 50 C 40 50, 60 0, 105 0" stroke="#f472b6" stroke-width="2" fill="none"/>
+    <polygon points="105,0 97,-5 97,5" fill="#f472b6"/>
+
+    <text x="52" y="30" text-anchor="middle" fill="#ffd600" font-family="system-ui" font-size="9">Addresses Passed</text>
+  </g>
+
+  <!-- Right: swap_inventory() Stack Frame -->
+  <g transform="translate(355, 75)">
+    <rect width="210" height="175" rx="8" fill="#151c33" stroke="#ffd600" stroke-width="1.5"/>
+    <rect width="210" height="28" rx="8" fill="#242338"/>
+    <text x="105" y="19" text-anchor="middle" fill="#ffd600" font-family="monospace" font-size="11" font-weight="700">swap_inventory(int *x, int *y)</text>
+
+    <rect x="15" y="42" width="180" height="110" rx="4" fill="#1e294b"/>
+    <text x="25" y="65" fill="#94a3b8" font-family="monospace" font-size="10">int temp = *x;</text>
+    <text x="25" y="90" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">*x = *y;</text>
+    <text x="25" y="115" fill="#f472b6" font-family="monospace" font-size="11" font-weight="700">*y = temp;</text>
+    <text x="25" y="140" fill="#34d399" font-family="system-ui" font-size="9">&check; Mutates caller memory directly!</text>
+
+    <text x="105" y="165" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="8">Pass-by-Reference in C</text>
+  </g>
+
+  <text x="300" y="278" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    By receiving addresses, functions can reach backwards through memory and mutate caller data.
+  </text>
+</svg>

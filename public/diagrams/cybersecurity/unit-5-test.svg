@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">SATELLITE COMMAND DEFENSE SHIELD (CAPSTONE)</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Aegis-1 orbital defense telemetry verification engine: all 5 security layers unified.</text>
+
+    <!-- Satellite Graphic & 5 Checkpoints -->
+    <g transform="translate(30, 80)">
+      <rect width="540" height="185" rx="8" fill="url(#cardGrad)" stroke="#253158" stroke-width="1.5"/>
+
+      <!-- Satellite Illustration Left -->
+      <g transform="translate(30, 30)">
+        <!-- Satellite body -->
+        <rect x="35" y="30" width="50" height="50" rx="4" fill="#1e293b" stroke="#ffd600" stroke-width="2"/>
+        <circle cx="60" cy="55" r="14" fill="#ffd600" fill-opacity="0.3"/>
+        <circle cx="60" cy="55" r="6" fill="#ffd600"/>
+
+        <!-- Solar panels -->
+        <rect x="0" y="37" width="30" height="36" rx="2" fill="#0284c7" stroke="#38bdf8" stroke-width="1"/>
+        <line x1="15" y1="37" x2="15" y2="73" stroke="#38bdf8"/>
+        <rect x="90" y="37" width="30" height="36" rx="2" fill="#0284c7" stroke="#38bdf8" stroke-width="1"/>
+        <line x1="105" y1="37" x2="105" y2="73" stroke="#38bdf8"/>
+
+        <!-- Dish antenna -->
+        <path d="M 60 30 Q 60 10 75 8" fill="none" stroke="#ffd600" stroke-width="2"/>
+        <circle cx="75" cy="8" r="4" fill="#ffd600"/>
+
+        <text x="60" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffd600">AEGIS-1</text>
+        <text x="60" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">Defense Sat</text>
+      </g>
+
+      <!-- 5 Defense Checkpoints Right -->
+      <g transform="translate(175, 18)" font-family="system-ui, sans-serif" font-size="11">
+        <!-- Check 1 -->
+        <rect width="335" height="24" rx="4" fill="#0c1124" stroke="#f87171" stroke-width="1"/>
+        <text x="12" y="16" font-weight="700" fill="#f87171">1. BLACKLIST</text>
+        <text x="110" y="16" fill="#cbd5e1">Verify ground station not rogue</text>
+
+        <!-- Check 2 -->
+        <rect y="30" width="335" height="24" rx="4" fill="#0c1124" stroke="#ffd600" stroke-width="1"/>
+        <text x="12" y="46" font-weight="700" fill="#ffd600">2. RBAC</text>
+        <text x="110" y="46" fill="#cbd5e1">Role authorization (Commander / Analyst)</text>
+
+        <!-- Check 3 -->
+        <rect y="60" width="335" height="24" rx="4" fill="#0c1124" stroke="#38bdf8" stroke-width="1"/>
+        <text x="12" y="76" font-weight="700" fill="#38bdf8">3. BOUNDS</text>
+        <text x="110" y="76" fill="#cbd5e1">Buffer limit guard: payload &lt;= 64B</text>
+
+        <!-- Check 4 -->
+        <rect y="90" width="335" height="24" rx="4" fill="#0c1124" stroke="#c084fc" stroke-width="1"/>
+        <text x="12" y="106" font-weight="700" fill="#c084fc">4. INTEGRITY</text>
+        <text x="110" y="106" fill="#cbd5e1">Cryptographic HMAC / SHA-256 Auth Hash</text>
+
+        <!-- Check 5 -->
+        <rect y="120" width="335" height="26" rx="4" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
+        <text x="12" y="137" font-weight="700" fill="#34d399">5. EXECUTE</text>
+        <text x="110" y="137" font-weight="600" fill="#6ee7b7">Safely fire thrusters or transmit telemetry</text>
+      </g>
+    </g>
+  
+</svg>

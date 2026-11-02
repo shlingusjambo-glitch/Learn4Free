@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">BITWISE XOR CIPHER (A ⊕ B ⊕ B = A)</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">The reversible toggle switch: encrypting twice with the same key recovers the original plaintext.</text>
+
+    <!-- Logic Table & Equation -->
+    <g transform="translate(30, 80)">
+      <rect width="240" height="190" rx="8" fill="url(#cardGrad)" stroke="#253158" stroke-width="1.5"/>
+      <text x="15" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">XOR TRUTH TABLE</text>
+      <g transform="translate(15, 42)" font-family="monospace" font-size="12" fill="#e2e8f0">
+        <rect width="210" height="24" rx="3" fill="#0c1124"/>
+        <text x="20" y="16">0 ⊕ 0 = 0  (Identical = 0)</text>
+        <rect y="28" width="210" height="24" rx="3" fill="#131b38"/>
+        <text x="20" y="44">0 ⊕ 1 = 1  (Different = 1)</text>
+        <rect y="56" width="210" height="24" rx="3" fill="#0c1124"/>
+        <text x="20" y="72">1 ⊕ 0 = 1  (Different = 1)</text>
+        <rect y="84" width="210" height="24" rx="3" fill="#131b38"/>
+        <text x="20" y="100">1 ⊕ 1 = 0  (Identical = 0)</text>
+      </g>
+      <text x="120" y="168" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Flips bits whenever key bit is 1</text>
+    </g>
+
+    <!-- Flow Diagram: Plaintext -> Ciphertext -> Plaintext -->
+    <g transform="translate(290, 80)">
+      <rect width="280" height="190" rx="8" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="15" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#34d399">SYMMETRIC CYCLE</text>
+
+      <rect x="20" y="45" width="100" height="30" rx="4" fill="#0c1124" stroke="#38bdf8" stroke-width="1"/>
+      <text x="70" y="64" text-anchor="middle" font-family="monospace" font-size="12" fill="#38bdf8">Plain (A)</text>
+
+      <text x="140" y="65" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffd600">⊕ Key (B)</text>
+
+      <rect x="20" y="95" width="240" height="30" rx="4" fill="#0c1124" stroke="#ffd600" stroke-width="1"/>
+      <text x="140" y="114" text-anchor="middle" font-family="monospace" font-size="12" fill="#ffd600">Ciphertext = A ⊕ B</text>
+
+      <text x="140" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffd600">⊕ Key (B) again</text>
+
+      <rect x="20" y="152" width="240" height="28" rx="4" fill="#064e3b" stroke="#34d399" stroke-width="1"/>
+      <text x="140" y="170" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">Original Plaintext (A) Restored!</text>
+    </g>
+  
+</svg>

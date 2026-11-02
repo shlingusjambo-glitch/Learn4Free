@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">ENCODING vs. ENCRYPTION</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Encoding is data formatting (NO key). Encryption protects confidentiality (REQUIRES secret key).</text>
+
+    <!-- Left Box: Encoding -->
+    <g transform="translate(30, 75)" filter="url(#shadow)">
+      <rect width="255" height="195" rx="8" fill="url(#cardGrad)" stroke="#f87171" stroke-width="1.5"/>
+      <rect x="15" y="15" width="90" height="22" rx="4" fill="#f87171" fill-opacity="0.2"/>
+      <text x="22" y="30" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f87171">ENCODING (Base64)</text>
+
+      <text x="15" y="62" font-family="monospace" font-size="12" fill="#e2e8f0">"SecretData"</text>
+      <path d="M 100 58 L 135 58" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+      <text x="145" y="62" font-family="monospace" font-size="12" fill="#ffd600">"U2VjcmV0..."</text>
+
+      <circle cx="127" cy="105" r="24" fill="#dc2626" fill-opacity="0.15" stroke="#f87171" stroke-width="1.5"/>
+      <!-- Open eye / unlocked -->
+      <path d="M 112 105 Q 127 92 142 105 Q 127 118 112 105 Z" fill="none" stroke="#f87171" stroke-width="2"/>
+      <circle cx="127" cy="105" r="5" fill="#f87171"/>
+
+      <text x="127" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#fca5a5">Confidentiality: ZERO</text>
+      <text x="127" y="168" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Anyone can decode without a key!</text>
+    </g>
+
+    <!-- Right Box: Encryption -->
+    <g transform="translate(315, 75)" filter="url(#shadow)">
+      <rect width="255" height="195" rx="8" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="15" y="15" width="105" height="22" rx="4" fill="#34d399" fill-opacity="0.2"/>
+      <text x="22" y="30" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#34d399">ENCRYPTION (AES/XOR)</text>
+
+      <text x="15" y="62" font-family="monospace" font-size="12" fill="#e2e8f0">"SecretData"</text>
+      <path d="M 100 58 L 135 58" stroke="#34d399" stroke-width="2"/>
+      <text x="145" y="62" font-family="monospace" font-size="12" fill="#38bdf8">b'\x9f\x02\xeb...'</text>
+
+      <!-- Key + Lock -->
+      <circle cx="127" cy="105" r="24" fill="#059669" fill-opacity="0.15" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="119" y="100" width="16" height="14" rx="2" fill="#ffd600"/>
+      <path d="M 122 100 V 94 A 5 5 0 0 1 132 94 V 100" fill="none" stroke="#ffd600" stroke-width="2"/>
+
+      <text x="127" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#6ee7b7">Confidentiality: PROTECTED</text>
+      <text x="127" y="168" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Unreadable without the secret key!</text>
+    </g>
+  
+</svg>

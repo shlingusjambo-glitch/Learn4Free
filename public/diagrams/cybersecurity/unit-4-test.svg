@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">INTRUSION DETECTION SYSTEM (IDS) ALERT ENGINE</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Real-time network security monitoring: correlates blacklist hits, scan sweeps, and DoS surges.</text>
+
+    <!-- IDS Console Grid -->
+    <g transform="translate(30, 80)">
+      <rect width="540" height="185" rx="8" fill="url(#cardGrad)" stroke="#253158" stroke-width="1.5"/>
+
+      <!-- 3 Sensor Pods -->
+      <g transform="translate(15, 20)">
+        <rect width="155" height="145" rx="6" fill="#0c1124" stroke="#f87171" stroke-width="1"/>
+        <circle cx="25" cy="25" r="10" fill="#dc2626"/>
+        <text x="45" y="29" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f87171">C2 BLACKLIST</text>
+        <text x="15" y="55" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Matches known</text>
+        <text x="15" y="70" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">malicious botnet IPs</text>
+        <rect x="15" y="85" width="125" height="45" rx="3" fill="#1e1422"/>
+        <text x="25" y="105" font-family="monospace" font-size="10" fill="#f87171">198.51.100.4</text>
+        <text x="25" y="120" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#fca5a5">&gt;&gt; DROP PACKET</text>
+      </g>
+
+      <g transform="translate(190, 20)">
+        <rect width="155" height="145" rx="6" fill="#0c1124" stroke="#ffd600" stroke-width="1"/>
+        <circle cx="25" cy="25" r="10" fill="#d97706"/>
+        <text x="45" y="29" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffd600">PORT SCANNER</text>
+        <text x="15" y="55" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Tracks unique</text>
+        <text x="15" y="70" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">destination ports</text>
+        <rect x="15" y="85" width="125" height="45" rx="3" fill="#221e14"/>
+        <text x="25" y="105" font-family="monospace" font-size="10" fill="#ffd600">ports &gt; threshold</text>
+        <text x="25" y="120" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#fde68a">&gt;&gt; RAISE ALERT</text>
+      </g>
+
+      <g transform="translate(365, 20)">
+        <rect width="160" height="145" rx="6" fill="#0c1124" stroke="#38bdf8" stroke-width="1"/>
+        <circle cx="25" cy="25" r="10" fill="#0284c7"/>
+        <text x="45" y="29" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">RATE LIMITER</text>
+        <text x="15" y="55" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Mitigates DoS</text>
+        <text x="15" y="70" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">request floods</text>
+        <rect x="15" y="85" width="130" height="45" rx="3" fill="#141c2b"/>
+        <text x="25" y="105" font-family="monospace" font-size="10" fill="#38bdf8">reqs &gt; max_rate</text>
+        <text x="25" y="120" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#bae6fd">&gt;&gt; THROTTLE / DROP</text>
+      </g>
+    </g>
+  
+</svg>

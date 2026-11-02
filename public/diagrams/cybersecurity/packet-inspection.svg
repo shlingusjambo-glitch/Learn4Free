@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#141c38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b2447"/>
+      <stop offset="100%" stop-color="#161e3b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd600"/>
+      <stop offset="100%" stop-color="#ff9100"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Canvas -->
+  <rect width="600" height="300" rx="12" fill="url(#bgGrad)"/>
+  <rect x="1.5" y="1.5" width="597" height="297" rx="10.5" fill="none" stroke="#253158" stroke-width="1.5"/>
+  
+    <!-- Header -->
+    <text x="30" y="38" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffd600">PACKET HEADER PARSING &amp; PORT SCAN DETECTION</text>
+    <text x="30" y="58" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Analyzing network envelopes: detecting attackers systematically testing door after door.</text>
+
+    <!-- Packet Breakdown -->
+    <g transform="translate(30, 80)">
+      <rect width="540" height="185" rx="8" fill="url(#cardGrad)" stroke="#253158" stroke-width="1.5"/>
+
+      <!-- Packet Anatomy -->
+      <g transform="translate(20, 15)">
+        <rect width="110" height="40" rx="4" fill="#0c1124" stroke="#38bdf8" stroke-width="1"/>
+        <text x="10" y="16" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">SOURCE IP</text>
+        <text x="10" y="32" font-family="monospace" font-size="11" fill="#38bdf8">10.0.0.99</text>
+
+        <rect x="120" y="0" width="110" height="40" rx="4" fill="#0c1124" stroke="#ffd600" stroke-width="1"/>
+        <text x="130" y="16" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">DEST IP</text>
+        <text x="130" y="32" font-family="monospace" font-size="11" fill="#ffd600">192.168.1.1</text>
+
+        <rect x="240" y="0" width="80" height="40" rx="4" fill="#0c1124" stroke="#f87171" stroke-width="1"/>
+        <text x="250" y="16" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">DEST PORT</text>
+        <text x="250" y="32" font-family="monospace" font-size="11" fill="#f87171">8080</text>
+
+        <rect x="330" y="0" width="60" height="40" rx="4" fill="#0c1124" stroke="#34d399" stroke-width="1"/>
+        <text x="340" y="16" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">PROTO</text>
+        <text x="340" y="32" font-family="monospace" font-size="11" fill="#34d399">TCP</text>
+
+        <rect x="400" y="0" width="100" height="40" rx="4" fill="#0c1124" stroke="#c084fc" stroke-width="1"/>
+        <text x="410" y="16" font-family="system-ui, sans-serif" font-size="9" fill="#94a3b8">FLAGS</text>
+        <text x="410" y="32" font-family="monospace" font-size="11" fill="#c084fc">SYN (Connect)</text>
+      </g>
+
+      <!-- Port Scan Timeline -->
+      <g transform="translate(20, 75)">
+        <rect width="500" height="90" rx="6" fill="#1e1b2e" stroke="#f87171" stroke-width="1"/>
+        <text x="15" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f87171">PORT SCAN PATTERN DETECTED (Nmap Sweep):</text>
+        <g transform="translate(15, 38)" font-family="monospace" font-size="10" fill="#cbd5e1">
+          <text y="10">10.0.0.99 -&gt; 192.168.1.1 : port 21 (FTP)   [SYN]</text>
+          <text y="25">10.0.0.99 -&gt; 192.168.1.1 : port 22 (SSH)   [SYN]</text>
+          <text y="40">10.0.0.99 -&gt; 192.168.1.1 : port 80 (HTTP)  [SYN]</text>
+        </g>
+        <rect x="360" y="28" width="125" height="45" rx="4" fill="#dc2626" fill-opacity="0.3"/>
+        <text x="422" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f87171">THRESHOLD: 3</text>
+        <text x="422" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#fca5a5">ALERT TRIGGERED</text>
+      </g>
+    </g>
+  
+</svg>
