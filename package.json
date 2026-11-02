@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "node scripts/export-static.js",
-    "test": "node test/verify-solutions.js"
+    "test": "node test/verify-solutions.js && node test/verify-full-autograder.js"
   },
   "engines": { "node": ">=18" }
 }
