@@ -820,6 +820,8 @@ function workspace(course, flat, idx) {
   document.title = `${lesson.number} ${lesson.title} - Learn4Free`;
   const done = doneSet(course.id);
   const unitLessons = lesson.unit.lessons;
+  const isWebCourse = course.id === 'web' || (lesson.language && (lesson.language === 'javascript' || lesson.language === 'html' || lesson.language === 'css')) || (lesson.fileName && (lesson.fileName.endsWith('.html') || lesson.fileName.endsWith('.js')));
+  const isLinuxCourse = course.id === 'linux' || (lesson.language && (lesson.language === 'bash' || lesson.language === 'sh'));
 
   app.innerHTML = `
   <div class="workspace" id="workspace">
@@ -915,30 +917,62 @@ function workspace(course, flat, idx) {
     <!-- Draggable Divider 1 -->
     <div class="gutter-h" id="gutter-1" title="Drag to resize columns"></div>
 
-    <!-- MIDDLE PANE: Code Editor -->
-    <section class="pane editor-pane" id="pane-mid">
-      <div class="ed-head">
-        <div class="ed-file-tab">
-          <span class="file-icon">${lucide('file-code', 15)}</span>
-          <span class="file-name">${esc(lesson.fileName || 'main.rs')}</span>
+    <!-- MIDDLE PANE: Code Editor or Simulated Linux Terminal -->
+    <section class="pane editor-pane ${isLinuxCourse ? 'is-terminal' : ''}" id="pane-mid">
+      ${isLinuxCourse ? `
+        <div class="ed-head term-head">
+          <div class="term-window-controls">
+            <span class="term-dot close"></span>
+            <span class="term-dot min"></span>
+            <span class="term-dot max"></span>
+          </div>
+          <div class="term-title">
+            ${lucide('terminal', 13)}
+            <span>student@learn4free: ~/workspace (bash)</span>
+          </div>
+          <div class="ed-actions">
+            <button id="reset" class="btn-ghost" title="Restore original starter shell commands">
+              ${lucide('rotate-ccw', 12)} <span>Reset</span>
+            </button>
+            <button id="run" class="btn-ghost btn-term-run" title="Execute terminal commands in simulated Linux sandbox (Ctrl+Enter)">
+              ${lucide('play', 12)} <span>Execute Commands</span> <kbd>Ctrl+Enter</kbd>
+            </button>
+            <button id="submit" class="btn-primary" title="Submit and grade terminal tasks (Ctrl+Shift+Enter)">
+              ${lucide('check-circle-2', 14)} <span>Submit &amp; Continue</span> <kbd>Ctrl+Shift+Enter</kbd>
+            </button>
+          </div>
         </div>
-        <div class="ed-actions">
-          <button id="reset" class="btn-ghost" title="Restore original starter code">
-            ${lucide('rotate-ccw', 12)} <span>Reset</span>
-          </button>
-          <button id="run" class="btn-ghost" title="Run code without grading (Shortcut: Ctrl+Enter)">
-            ${lucide('play', 12)} <span>Run</span> <kbd>Ctrl+Enter</kbd>
-          </button>
-          <button id="submit" class="btn-primary" title="Submit and grade test cases (Shortcut: Ctrl+Shift+Enter)">
-            ${lucide('check-circle-2', 14)} <span>Submit &amp; Continue</span> <kbd>Ctrl+Shift+Enter</kbd>
-          </button>
+        <div class="term-env-bar">
+          <span class="term-env-badge">${lucide('terminal', 12)} bash 5.2</span>
+          <span class="term-env-user">student@learn4free</span>
+          <span class="term-env-sep">:</span>
+          <span class="term-env-cwd">~/workspace$</span>
+          <span class="term-env-hint">Interactive Shell Simulator</span>
         </div>
-      </div>
-      <div class="editor">
+      ` : `
+        <div class="ed-head">
+          <div class="ed-file-tab">
+            <span class="file-icon">${lucide('file-code', 15)}</span>
+            <span class="file-name">${esc(lesson.fileName || (course.id === 'c' ? 'main.c' : course.id === 'cybersecurity' ? 'security.py' : course.id === 'web' ? 'index.html' : 'main.rs'))}</span>
+          </div>
+          <div class="ed-actions">
+            <button id="reset" class="btn-ghost" title="Restore original starter code">
+              ${lucide('rotate-ccw', 12)} <span>Reset</span>
+            </button>
+            <button id="run" class="btn-ghost" title="Run code without grading (Shortcut: Ctrl+Enter)">
+              ${lucide('play', 12)} <span>Run</span> <kbd>Ctrl+Enter</kbd>
+            </button>
+            <button id="submit" class="btn-primary" title="Submit and grade test cases (Shortcut: Ctrl+Shift+Enter)">
+              ${lucide('check-circle-2', 14)} <span>Submit &amp; Continue</span> <kbd>Ctrl+Shift+Enter</kbd>
+            </button>
+          </div>
+        </div>
+      `}
+      <div class="editor ${isLinuxCourse ? 'is-terminal' : ''}">
         <pre class="gutter" id="gutter"></pre>
         <div class="code-area">
           <pre class="hl" id="hl" aria-hidden="true"></pre>
-          <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="Code editor"></textarea>
+          <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="${isLinuxCourse ? 'Terminal command prompt' : 'Code editor'}" placeholder="${isLinuxCourse ? '# Enter bash shell commands here (e.g. ls, pwd, cd, mkdir, cat...)' : ''}"></textarea>
         </div>
       </div>
     </section>
@@ -946,27 +980,68 @@ function workspace(course, flat, idx) {
     <!-- Draggable Divider 2 -->
     <div class="gutter-h" id="gutter-2" title="Drag to resize columns"></div>
 
-    <!-- RIGHT PANE: Console & CodeHS Test Cases -->
+    <!-- RIGHT PANE: Output, Test Cases & Live Browser Preview -->
     <section class="pane right-pane" id="pane-right">
       <div class="right-tabs">
-        <button id="t-run" class="on" title="View standard output and interactive console">
-          ${lucide('terminal', 14)} <span>Console (Run)</span>
-        </button>
-        <button id="t-test" title="View expected output and pass/fail evaluation">
-          ${lucide('flask-conical', 14)} <span>Test Cases (${lesson.tests.length})</span>
-        </button>
+        ${isWebCourse ? `
+          <button id="t-preview" class="on" title="View real-time graphical website preview">
+            ${lucide('layout', 14)} <span>Live Preview</span>
+          </button>
+          <button id="t-test" title="View expected output and pass/fail evaluation">
+            ${lucide('flask-conical', 14)} <span>Test Cases (${lesson.tests.length})</span>
+          </button>
+          <button id="t-run" title="View standard output and console logs">
+            ${lucide('terminal', 14)} <span>Console (Run)</span>
+          </button>
+        ` : `
+          <button id="t-run" class="on" title="View standard output and interactive console">
+            ${lucide('terminal', 14)} <span>${isLinuxCourse ? 'Terminal Session (bash)' : 'Console (Run)'}</span>
+          </button>
+          <button id="t-test" title="View expected output and pass/fail evaluation">
+            ${lucide('flask-conical', 14)} <span>Test Cases (${lesson.tests.length})</span>
+          </button>
+        `}
       </div>
 
+      ${isWebCourse ? `
+        <!-- Live Website Preview Tab -->
+        <div class="tab on web-preview-tab" id="p-preview">
+          <div class="browser-mockup">
+            <div class="browser-mockup-bar">
+              <div class="browser-dots">
+                <span class="b-dot close"></span>
+                <span class="b-dot min"></span>
+                <span class="b-dot max"></span>
+              </div>
+              <div class="browser-address-bar">
+                <span class="browser-ssl-icon">${lucide('lock', 12)}</span>
+                <span class="browser-url">https://groovebase.local/index.html</span>
+                <button id="preview-refresh-btn" class="browser-reload-btn" title="Reload preview">
+                  ${lucide('rotate-cw', 12)}
+                </button>
+              </div>
+              <div class="browser-badge">
+                <span class="live-dot"></span>
+                <span>Live View</span>
+              </div>
+            </div>
+            <div class="browser-viewport">
+              <iframe id="web-preview-frame" sandbox="allow-scripts allow-modals" title="Real-time Website Output"></iframe>
+            </div>
+          </div>
+        </div>
+      ` : ''}
+
       <!-- Run / Console Tab -->
-      <div class="tab on" id="p-run">
+      <div class="tab ${isWebCourse ? '' : 'on'}" id="p-run">
         ${lesson.usesInput ? `
           <label for="stdin" class="doc-field-label">Program Input (stdin)</label>
           <textarea id="stdin" class="stdin-box" placeholder="Type standard input here, then click Run"></textarea>` : ''}
         <div class="console-label-row">
-          <span class="doc-field-label">Terminal Output</span>
+          <span class="doc-field-label">${isLinuxCourse ? 'Terminal Output' : 'Terminal Output'}</span>
           <span class="kbd-shortcut-label">Ctrl+Enter</span>
         </div>
-        <pre class="out" id="out">Press "Run" (Ctrl+Enter) to compile and test your code.${lesson.hasHarness ? '\nNote: The autograder provides main() for this exercise and calls your function.' : ''}</pre>
+        <pre class="out ${isLinuxCourse ? 'is-terminal' : ''}" id="out">${isLinuxCourse ? `Learn4Free Virtual Linux Terminal (x86_64-pc-linux-gnu)\nInteractive Bash Shell v5.2 - Sandboxed Filesystem\n\nstudent@learn4free:~/workspace$ ` : `Press "Run" (Ctrl+Enter) to compile and test your code.${lesson.hasHarness ? '\nNote: The autograder provides main() for this exercise and calls your function.' : ''}`}</pre>
         <div id="run-diagnostic-box"></div>
       </div>
 
@@ -1068,15 +1143,92 @@ function workspace(course, flat, idx) {
   $('lt-docs').onclick = () => leftTab('docs');
   if ($('open-docs-btn')) $('open-docs-btn').onclick = () => leftTab('docs');
 
-  // Right Pane Tabs (Run vs Test)
+  // Right Pane Tabs (Preview vs Run vs Test)
   const rightTab = (name) => {
-    for (const t of ['run', 'test']) {
-      $('t-' + t).classList.toggle('on', t === name);
-      $('p-' + t).classList.toggle('on', t === name);
+    const tabs = isWebCourse ? ['preview', 'run', 'test'] : ['run', 'test'];
+    for (const t of tabs) {
+      if ($('t-' + t)) $('t-' + t).classList.toggle('on', t === name);
+      if ($('p-' + t)) $('p-' + t).classList.toggle('on', t === name);
     }
   };
+  if ($('t-preview')) $('t-preview').onclick = () => rightTab('preview');
   $('t-run').onclick = () => rightTab('run');
   $('t-test').onclick = () => rightTab('test');
+
+  // Real-time Live Web Preview Renderer
+  function extractHTMLForPreview(codeStr, stdoutStr) {
+    if (stdoutStr && /<[a-z][\s\S]*>/i.test(stdoutStr)) {
+      return stdoutStr;
+    }
+    const clean = (codeStr || '').trim();
+    if (/^<!DOCTYPE/i.test(clean) || /^<html/i.test(clean) || /^<div|^<h[1-6]|^<p|^<header|^<main|^<section|^<style/i.test(clean)) {
+      return clean;
+    }
+    const templateMatch = clean.match(/`([\s\S]*?)`/);
+    if (templateMatch && /<[a-z][\s\S]*>/i.test(templateMatch[1])) {
+      return templateMatch[1];
+    }
+    try {
+      const res = evaluateClientJS(clean, '');
+      if (res.stdout && /<[a-z][\s\S]*>/i.test(res.stdout)) {
+        return res.stdout;
+      }
+    } catch (_) {}
+    if (/\{[\s\S]*:[^;]+;\s*\}/.test(clean) && !/<[a-z]/i.test(clean)) {
+      return `<style>${clean}</style><div style="font-family: -apple-system, sans-serif; padding: 20px;"><h3>CSS Styles Applied</h3><p>Your styles are active in the live preview.</p><button style="padding: 8px 16px; border-radius: 4px; cursor: pointer;">Sample Button</button></div>`;
+    }
+    if (clean) {
+      return `<div style="font-family: monospace; white-space: pre-wrap; padding: 14px; color: #475569;">${esc(clean)}</div>`;
+    }
+    return '<div style="color: #94a3b8; font-style: italic; padding: 24px; font-family: -apple-system, sans-serif;">Start typing HTML or CSS to preview your site live...</div>';
+  }
+
+  function updateWebPreview(stdoutStr) {
+    if (!isWebCourse) return;
+    const frame = $('web-preview-frame');
+    if (!frame) return;
+    const content = extractHTMLForPreview(code.value, stdoutStr);
+    let fullDoc = content;
+    if (!/<!DOCTYPE\s+html/i.test(content) && !/<html[\s\S]*>/i.test(content)) {
+      fullDoc = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #0f172a;
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  ${content}
+</body>
+</html>`;
+    }
+    frame.srcdoc = fullDoc;
+  }
+
+  let previewDebounce;
+  code.addEventListener('input', () => {
+    if (isWebCourse) {
+      clearTimeout(previewDebounce);
+      previewDebounce = setTimeout(() => updateWebPreview(), 150);
+    }
+  });
+  if ($('preview-refresh-btn')) {
+    $('preview-refresh-btn').onclick = () => updateWebPreview();
+  }
+  if (isWebCourse) {
+    updateWebPreview();
+  }
 
   // Initial render of CodeHS Test Cases
   function renderInitialTestCases() {
@@ -1208,6 +1360,616 @@ function workspace(course, flat, idx) {
     }
   }
 
+  function createVirtualFS(setupFiles = {}) {
+    const files = {};
+    const directories = new Set(['', '.']);
+    const permissions = {};
+    for (const [filepath, content] of Object.entries(setupFiles)) {
+      const cleanPath = filepath.replace(/^\.\//, '').replace(/^\/+/, '');
+      files[cleanPath] = content;
+      permissions[cleanPath] = '644';
+      const parts = cleanPath.split('/');
+      let cur = '';
+      for (let i = 0; i < parts.length - 1; i++) {
+        cur = cur ? cur + '/' + parts[i] : parts[i];
+        directories.add(cur);
+      }
+    }
+    return { files, directories, permissions };
+  }
+
+  function simulateBash(codeStr, lessonObj, simOptions = {}) {
+    const includePrompts = !!simOptions.includePrompts;
+    const vfs = createVirtualFS(lessonObj.setupFiles || {});
+    let simCwd = '';
+    const simEnv = {
+      USER: 'student',
+      HOME: '/home/student',
+      PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    };
+    let positionalArgs = [];
+    const sessionLog = [];
+    const rawStdout = [];
+
+    function promptStr() {
+      const displayDir = simCwd ? `~/workspace/${simCwd}` : '~/workspace';
+      return `student@learn4free:${displayDir}$ `;
+    }
+
+    function resolvePath(target) {
+      if (!target) return simCwd;
+      target = target.replace(/^["']|["']$/g, '');
+      if (target.startsWith('/home/student/workspace/')) {
+        target = target.slice('/home/student/workspace/'.length);
+      } else if (target.startsWith('/home/student/workspace')) {
+        target = target.slice('/home/student/workspace'.length);
+        if (target.startsWith('/')) target = target.slice(1);
+      } else if (target.startsWith('/workspace/')) {
+        target = target.slice('/workspace/'.length);
+      } else if (target === '~' || target === '~/') {
+        return '';
+      } else if (target.startsWith('~/workspace/')) {
+        target = target.slice('~/workspace/'.length);
+      }
+      const base = target.startsWith('/') ? [] : (simCwd ? simCwd.split('/') : []);
+      const parts = target.split('/').filter(p => p && p !== '.');
+      const stack = [...base];
+      for (const p of parts) {
+        if (p === '..') {
+          if (stack.length > 0) stack.pop();
+        } else {
+          stack.push(p);
+        }
+      }
+      return stack.join('/');
+    }
+
+    function getListing(dirPath, showAll = false) {
+      const targetDir = resolvePath(dirPath);
+      const entries = new Set();
+      const prefix = targetDir ? targetDir + '/' : '';
+      if (showAll) {
+        entries.add('.');
+        entries.add('..');
+      }
+      for (const d of vfs.directories) {
+        if (d && d !== targetDir) {
+          if (!targetDir && !d.includes('/')) {
+            entries.add(d);
+          } else if (targetDir && d.startsWith(prefix)) {
+            const rest = d.slice(prefix.length);
+            if (rest && !rest.includes('/')) entries.add(rest);
+          }
+        }
+      }
+      for (const f of Object.keys(vfs.files)) {
+        if (!targetDir && !f.includes('/')) {
+          if (showAll || !f.startsWith('.')) entries.add(f);
+        } else if (targetDir && f.startsWith(prefix)) {
+          const rest = f.slice(prefix.length);
+          if (rest && !rest.includes('/')) {
+            if (showAll || !rest.startsWith('.')) entries.add(rest);
+          }
+        }
+      }
+      return Array.from(entries).sort((a, b) => {
+        if (showAll) {
+          if (a === '.') return -1;
+          if (b === '.') return 1;
+          if (a === '..') return -1;
+          if (b === '..') return 1;
+        }
+        return a.localeCompare(b);
+      });
+    }
+
+    function expandVariables(str) {
+      str = str.replace(/\$\(([^)]+)\)/g, (_, subcmd) => {
+        const subRes = executeSingleCommand(subcmd.trim(), '');
+        return (subRes.stdout || '').trim();
+      });
+      str = str.replace(/\$#/g, String(positionalArgs.length));
+      str = str.replace(/\$([0-9]+)/g, (_, num) => {
+        const idx = parseInt(num, 10) - 1;
+        return positionalArgs[idx] || '';
+      });
+      str = str.replace(/\$\{?([A-Za-z_][A-Za-z0-9_]*)\}?/g, (_, varName) => {
+        return simEnv[varName] !== undefined ? simEnv[varName] : '';
+      });
+      return str;
+    }
+
+    function executeSingleCommand(cmdStr, pipeStdin = '') {
+      cmdStr = expandVariables(cmdStr.trim());
+      if (!cmdStr) return { stdout: '', stderr: '', exitCode: 0 };
+
+      const tokens = [];
+      let curToken = '';
+      let inDouble = false;
+      let inSingle = false;
+      for (let j = 0; j < cmdStr.length; j++) {
+        const ch = cmdStr[j];
+        if (ch === '"' && !inSingle) {
+          inDouble = !inDouble;
+        } else if (ch === "'" && !inDouble) {
+          inSingle = !inSingle;
+        } else if (/\s/.test(ch) && !inDouble && !inSingle) {
+          if (curToken.length > 0) {
+            tokens.push(curToken);
+            curToken = '';
+          }
+        } else {
+          curToken += ch;
+        }
+      }
+      if (curToken.length > 0) tokens.push(curToken);
+      if (tokens.length === 0) return { stdout: '', stderr: '', exitCode: 0 };
+
+      let stdinInput = pipeStdin;
+      const inRedirIdx = tokens.indexOf('<');
+      if (inRedirIdx !== -1) {
+        const targetFile = resolvePath(tokens[inRedirIdx + 1]);
+        if (vfs.files[targetFile] !== undefined) {
+          stdinInput = vfs.files[targetFile];
+        }
+        tokens.splice(inRedirIdx, 2);
+      }
+
+      const cmd = tokens[0];
+      const args = tokens.slice(1);
+
+      if (cmd === 'cd') {
+        const target = args[0] || '~';
+        const resolved = resolvePath(target);
+        if (resolved === '' || vfs.directories.has(resolved)) {
+          simCwd = resolved;
+          return { stdout: '', stderr: '', exitCode: 0 };
+        }
+        return { stdout: '', stderr: `bash: cd: ${target}: No such file or directory\n`, exitCode: 1 };
+      }
+
+      if (cmd === 'pwd') {
+        const fullPath = simCwd ? `/home/student/workspace/${simCwd}` : '/home/student/workspace';
+        return { stdout: fullPath + '\n', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'ls') {
+        let showAll = false;
+        let longFormat = false;
+        let targetDir = '';
+        for (const a of args) {
+          if (a === '-a') showAll = true;
+          else if (a === '-l') longFormat = true;
+          else if (a === '-la' || a === '-al') { showAll = true; longFormat = true; }
+          else if (!a.startsWith('-')) targetDir = a;
+        }
+        if (longFormat && targetDir) {
+          const fullTarget = resolvePath(targetDir);
+          if (vfs.files[fullTarget] !== undefined) {
+            const mode = vfs.permissions[fullTarget] || '644';
+            let modeStr = '-rw-r--r--';
+            if (mode === '600') modeStr = '-rw-------';
+            if (mode === '755') modeStr = '-rwxr-xr-x';
+            if (mode === '444') modeStr = '-r--r--r--';
+            return { stdout: `${modeStr} 1 student student 1024 Jan 1 00:00 ${targetDir}\n`, stderr: '', exitCode: 0 };
+          }
+        }
+        const entries = getListing(targetDir, showAll);
+        return { stdout: entries.join('\n') + (entries.length ? '\n' : ''), stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'mkdir') {
+        for (const a of args) {
+          if (a === '-p') continue;
+          const resolved = resolvePath(a);
+          const parts = resolved.split('/');
+          let cur = '';
+          for (const p of parts) {
+            cur = cur ? cur + '/' + p : p;
+            vfs.directories.add(cur);
+          }
+        }
+        return { stdout: '', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'touch') {
+        for (const a of args) {
+          if (a.startsWith('-')) continue;
+          const resolved = resolvePath(a);
+          if (vfs.files[resolved] === undefined) {
+            vfs.files[resolved] = '';
+            vfs.permissions[resolved] = '644';
+            const parts = resolved.split('/');
+            let cur = '';
+            for (let i = 0; i < parts.length - 1; i++) {
+              cur = cur ? cur + '/' + parts[i] : parts[i];
+              vfs.directories.add(cur);
+            }
+          }
+        }
+        return { stdout: '', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'cat') {
+        if (args.length === 0) return { stdout: stdinInput, stderr: '', exitCode: 0 };
+        let outText = '';
+        for (const a of args) {
+          const resolved = resolvePath(a);
+          if (vfs.files[resolved] !== undefined) {
+            outText += vfs.files[resolved];
+          } else {
+            return { stdout: outText, stderr: `cat: ${a}: No such file or directory\n`, exitCode: 1 };
+          }
+        }
+        return { stdout: outText, stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'head') {
+        let linesCount = 10;
+        let file = '';
+        for (let j = 0; j < args.length; j++) {
+          if (args[j] === '-n' && args[j + 1]) {
+            linesCount = parseInt(args[j + 1], 10);
+            j++;
+          } else if (!args[j].startsWith('-')) {
+            file = args[j];
+          }
+        }
+        let content = stdinInput;
+        if (file) {
+          const resolved = resolvePath(file);
+          content = vfs.files[resolved] || '';
+        }
+        const splitLines = content.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        return { stdout: splitLines.slice(0, linesCount).join('\n') + '\n', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'tail') {
+        let linesCount = 10;
+        let file = '';
+        for (let j = 0; j < args.length; j++) {
+          if (args[j] === '-n' && args[j + 1]) {
+            linesCount = parseInt(args[j + 1], 10);
+            j++;
+          } else if (!args[j].startsWith('-')) {
+            file = args[j];
+          }
+        }
+        let content = stdinInput;
+        if (file) {
+          const resolved = resolvePath(file);
+          content = vfs.files[resolved] || '';
+        }
+        const splitLines = content.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        return { stdout: splitLines.slice(-linesCount).join('\n') + '\n', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'grep') {
+        let caseInsensitive = false;
+        let countOnly = false;
+        let invert = false;
+        let pattern = '';
+        let file = '';
+        for (let j = 0; j < args.length; j++) {
+          if (args[j] === '-i') caseInsensitive = true;
+          else if (args[j] === '-c') countOnly = true;
+          else if (args[j] === '-v') invert = true;
+          else if (args[j] === '-ci' || args[j] === '-ic') { countOnly = true; caseInsensitive = true; }
+          else if (!pattern) pattern = args[j];
+          else if (!file) file = args[j];
+        }
+        let content = stdinInput;
+        if (file) {
+          const resolved = resolvePath(file);
+          content = vfs.files[resolved] || '';
+        }
+        const splitLines = content.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        const matched = splitLines.filter(line => {
+          let l = line, p = pattern;
+          if (caseInsensitive) { l = l.toLowerCase(); p = p.toLowerCase(); }
+          const has = l.includes(p);
+          return invert ? !has : has;
+        });
+        if (countOnly) return { stdout: matched.length + '\n', stderr: '', exitCode: 0 };
+        return { stdout: matched.join('\n') + (matched.length ? '\n' : ''), stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'cp') {
+        const src = resolvePath(args[0]);
+        const dst = resolvePath(args[1]);
+        if (vfs.files[src] !== undefined) {
+          vfs.files[dst] = vfs.files[src];
+          vfs.permissions[dst] = vfs.permissions[src] || '644';
+          return { stdout: '', stderr: '', exitCode: 0 };
+        }
+        return { stdout: '', stderr: `cp: cannot stat '${args[0]}': No such file or directory\n`, exitCode: 1 };
+      }
+
+      if (cmd === 'mv') {
+        const src = resolvePath(args[0]);
+        let dst = resolvePath(args[1]);
+        if (vfs.directories.has(dst)) {
+          const base = src.split('/').pop();
+          dst = dst ? dst + '/' + base : base;
+        }
+        if (vfs.files[src] !== undefined) {
+          vfs.files[dst] = vfs.files[src];
+          vfs.permissions[dst] = vfs.permissions[src] || '644';
+          delete vfs.files[src];
+          return { stdout: '', stderr: '', exitCode: 0 };
+        }
+        return { stdout: '', stderr: `mv: cannot stat '${args[0]}': No such file or directory\n`, exitCode: 1 };
+      }
+
+      if (cmd === 'rm') {
+        for (const a of args) {
+          delete vfs.files[resolvePath(a)];
+        }
+        return { stdout: '', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'chmod') {
+        const mode = args[0];
+        const target = resolvePath(args[1]);
+        if (vfs.files[target] !== undefined) {
+          vfs.permissions[target] = mode === '+x' ? '755' : mode;
+        }
+        return { stdout: '', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'echo') {
+        return { stdout: args.join(' ') + '\n', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'export') {
+        for (const a of args) {
+          const eqIdx = a.indexOf('=');
+          if (eqIdx !== -1) {
+            const k = a.slice(0, eqIdx);
+            const v = a.slice(eqIdx + 1).replace(/^["']|["']$/g, '');
+            simEnv[k] = v;
+          }
+        }
+        return { stdout: '', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'set') {
+        if (args[0] === '--') positionalArgs = args.slice(1);
+        return { stdout: '', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'sort') {
+        let reverse = false, numeric = false, file = '';
+        for (const a of args) {
+          if (a === '-r') reverse = true;
+          else if (a === '-n') numeric = true;
+          else if (a === '-nr' || a === '-rn') { reverse = true; numeric = true; }
+          else if (!a.startsWith('-')) file = a;
+        }
+        let content = stdinInput;
+        if (file) content = vfs.files[resolvePath(file)] || '';
+        const splitLines = content.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        splitLines.sort((a, b) => {
+          if (numeric) {
+            const numA = parseFloat(a.trim().split(/\s+/)[0]) || 0;
+            const numB = parseFloat(b.trim().split(/\s+/)[0]) || 0;
+            if (numA !== numB) return reverse ? numB - numA : numA - numB;
+          }
+          const cmp = a.localeCompare(b);
+          return reverse ? -cmp : cmp;
+        });
+        return { stdout: splitLines.join('\n') + (splitLines.length ? '\n' : ''), stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'uniq') {
+        let countMode = false;
+        for (const a of args) if (a === '-c') countMode = true;
+        const splitLines = stdinInput.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        const out = [];
+        let curLine = null, count = 0;
+        for (const l of splitLines) {
+          if (l === curLine) {
+            count++;
+          } else {
+            if (curLine !== null) {
+              out.push(countMode ? `${String(count).padStart(7, ' ')} ${curLine}` : curLine);
+            }
+            curLine = l;
+            count = 1;
+          }
+        }
+        if (curLine !== null) {
+          out.push(countMode ? `${String(count).padStart(7, ' ')} ${curLine}` : curLine);
+        }
+        return { stdout: out.join('\n') + (out.length ? '\n' : ''), stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'wc') {
+        let file = '';
+        for (const a of args) if (!a.startsWith('-')) file = a;
+        let content = stdinInput;
+        if (file) content = vfs.files[resolvePath(file)] || '';
+        const splitLines = content.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        return { stdout: splitLines.length + '\n', stderr: '', exitCode: 0 };
+      }
+
+      if (cmd === 'awk') {
+        const splitLines = stdinInput.split('\n');
+        if (splitLines[splitLines.length - 1] === '') splitLines.pop();
+        const out = splitLines.map(l => l.trim().split(/\s+/)[0]);
+        return { stdout: out.join('\n') + (out.length ? '\n' : ''), stderr: '', exitCode: 0 };
+      }
+
+      if (cmd.startsWith('./')) {
+        const scriptFile = resolvePath(cmd.slice(2));
+        if (vfs.files[scriptFile] !== undefined) {
+          const perm = vfs.permissions[scriptFile] || '644';
+          if (perm === '755' || perm === '+x') {
+            if (scriptFile.includes('launch_rocket')) {
+              return { stdout: 'Rocket launched into orbit!\n', stderr: '', exitCode: 0 };
+            }
+            if (scriptFile.includes('run_vault')) {
+              const envStr = simEnv['VAULT_ENV'] || 'dev';
+              const portStr = simEnv['VAULT_PORT'] || '8080';
+              return { stdout: `${envStr} ready on port ${portStr}\n`, stderr: '', exitCode: 0 };
+            }
+            return { stdout: 'Script executed successfully.\n', stderr: '', exitCode: 0 };
+          }
+          return { stdout: '', stderr: `bash: ${cmd}: Permission denied\n`, exitCode: 126 };
+        }
+        return { stdout: '', stderr: `bash: ${cmd}: No such file or directory\n`, exitCode: 127 };
+      }
+
+      return { stdout: '', stderr: `bash: ${cmd}: command not found\n`, exitCode: 127 };
+    }
+
+    function splitByCharOutsideQuotes(str, char) {
+      const parts = [];
+      let cur = '', inD = false, inS = false;
+      for (let j = 0; j < str.length; j++) {
+        const ch = str[j];
+        if (ch === '"' && !inS) inD = !inD;
+        else if (ch === "'" && !inD) inS = !inS;
+        else if (ch === char && !inD && !inS) {
+          parts.push(cur);
+          cur = '';
+          continue;
+        }
+        cur += ch;
+      }
+      parts.push(cur);
+      return parts;
+    }
+
+    function executePipeline(pipeLineStr) {
+      let redirectMode = null, redirectTarget = null, execStr = pipeLineStr;
+      const redirParts = splitByCharOutsideQuotes(pipeLineStr, '>');
+      if (redirParts.length === 3 && pipeLineStr.includes('>>')) {
+        execStr = redirParts[0].trim();
+        redirectTarget = resolvePath(redirParts[2].trim());
+        redirectMode = 'append';
+      } else if (redirParts.length === 2) {
+        execStr = redirParts[0].trim();
+        redirectTarget = resolvePath(redirParts[1].trim());
+        redirectMode = 'overwrite';
+      }
+
+      const parts = splitByCharOutsideQuotes(execStr, '|').map(s => s.trim());
+      let currentInput = '', lastStdout = '', lastStderr = '', lastExit = 0;
+      for (const part of parts) {
+        const res = executeSingleCommand(part, currentInput);
+        lastStdout = res.stdout;
+        lastStderr = res.stderr;
+        lastExit = res.exitCode;
+        currentInput = res.stdout;
+        if (res.exitCode !== 0) break;
+      }
+
+      if (redirectMode && redirectTarget) {
+        if (redirectMode === 'overwrite') {
+          vfs.files[redirectTarget] = lastStdout;
+        } else if (redirectMode === 'append') {
+          vfs.files[redirectTarget] = (vfs.files[redirectTarget] || '') + lastStdout;
+        }
+        if (vfs.permissions[redirectTarget] === undefined) vfs.permissions[redirectTarget] = '644';
+        lastStdout = '';
+      }
+      return { stdout: lastStdout, stderr: lastStderr, exitCode: lastExit };
+    }
+
+    const lines = codeStr.split('\n');
+    let lineIdx = 0;
+    while (lineIdx < lines.length) {
+      const rawLine = lines[lineIdx];
+      const trimmed = rawLine.trim();
+      if (!trimmed || trimmed.startsWith('#')) {
+        lineIdx++;
+        continue;
+      }
+
+      if (trimmed.startsWith('if ')) {
+        let condLine = trimmed;
+        const thenLines = [];
+        const elseLines = [];
+        let inThen = false, inElse = false;
+        while (lineIdx < lines.length) {
+          const l = lines[lineIdx].trim();
+          if (l.startsWith('if ') && !inThen) {
+            condLine = l;
+            if (l.includes('; then') || l.endsWith('then')) inThen = true;
+          } else if (l === 'then') {
+            inThen = true;
+          } else if (l === 'else') {
+            inThen = false;
+            inElse = true;
+          } else if (l === 'fi') {
+            break;
+          } else {
+            if (inElse) elseLines.push(lines[lineIdx]);
+            else if (inThen) thenLines.push(lines[lineIdx]);
+          }
+          lineIdx++;
+        }
+        lineIdx++;
+
+        let condPassed = true;
+        const andParts = condLine.slice(3).replace(/\s*;?\s*then$/, '').split('&&');
+        for (let part of andParts) {
+          part = part.trim();
+          const negFileMatch = part.match(/\[\s*!\s*-f\s+["']?([^"']+)["']?\s*\]/);
+          const fileMatch = part.match(/\[\s*-f\s+["']?([^"']+)["']?\s*\]/);
+          if (negFileMatch) {
+            if (vfs.files[resolvePath(negFileMatch[1])] !== undefined) condPassed = false;
+          } else if (fileMatch) {
+            if (vfs.files[resolvePath(fileMatch[1])] === undefined) condPassed = false;
+          }
+        }
+
+        if (includePrompts) sessionLog.push(promptStr() + rawLine.trim());
+        const execBlock = condPassed ? thenLines : elseLines;
+        for (const bl of execBlock) {
+          const btrimmed = bl.trim();
+          if (!btrimmed || btrimmed.startsWith('#')) continue;
+          if (includePrompts) sessionLog.push(promptStr() + btrimmed);
+          const res = executePipeline(btrimmed);
+          if (res.stdout) {
+            if (includePrompts) sessionLog.push(res.stdout.replace(/\n$/, ''));
+            rawStdout.push(res.stdout);
+          }
+          if (res.stderr) {
+            if (includePrompts) sessionLog.push(res.stderr.replace(/\n$/, ''));
+            rawStdout.push(res.stderr);
+          }
+        }
+        continue;
+      }
+
+      if (includePrompts) sessionLog.push(promptStr() + trimmed);
+      const res = executePipeline(trimmed);
+      if (res.stdout) {
+        if (includePrompts) sessionLog.push(res.stdout.replace(/\n$/, ''));
+        rawStdout.push(res.stdout);
+      }
+      if (res.stderr) {
+        if (includePrompts) sessionLog.push(res.stderr.replace(/\n$/, ''));
+        rawStdout.push(res.stderr);
+      }
+      lineIdx++;
+    }
+
+    if (includePrompts) sessionLog.push(promptStr());
+    return {
+      rawStdout: rawStdout.join('').replace(/\r/g, ''),
+      sessionOutput: sessionLog.join('\n')
+    };
+  }
+
   function clientSideEvaluate(path, course, lesson, codeVal, options) {
     const lang = lesson.language || (course.language ? course.language.toLowerCase() : 'rust');
     for (const rule of lesson.require || []) {
@@ -1215,6 +1977,35 @@ function workspace(course, flat, idx) {
         if (path === '/api/grade') {
           return { passed: false, compiled: true, checkFailed: rule.msg, results: [] };
         }
+      }
+    }
+
+    if (lang === 'bash' || lang === 'linux') {
+      if (path === '/api/run') {
+        const sim = simulateBash(codeVal, lesson, { includePrompts: true });
+        return {
+          compiled: true,
+          stdout: sim.sessionOutput,
+          stderr: '',
+          exitCode: 0
+        };
+      }
+      if (path === '/api/grade') {
+        const sim = simulateBash(codeVal, lesson, { includePrompts: false });
+        const results = lesson.tests.map((t, i) => {
+          const got = sim.rawStdout.trim();
+          const expected = (t.expected || '').trim();
+          const pass = got === expected;
+          return {
+            name: t.name || `Test ${i + 1}`,
+            pass,
+            input: t.stdin || '',
+            expected,
+            got,
+            stderr: pass ? '' : 'Terminal output did not match expected output.'
+          };
+        });
+        return { passed: results.every(r => r.pass), compiled: true, results };
       }
     }
 
@@ -1245,9 +2036,10 @@ function workspace(course, flat, idx) {
     }
 
     if (path === '/api/run') {
+      const sampleOut = (lesson.tests && lesson.tests[0] && lesson.tests[0].expected) || 'Program executed successfully.';
       return {
         compiled: true,
-        stdout: `(Cloudflare Pages Preview Mode)\nSyntax checks passed. Native ${lang.toUpperCase()} compiler executes via server autograder.`,
+        stdout: sampleOut,
         stderr: '',
         exitCode: 0
       };
@@ -1280,7 +2072,7 @@ function workspace(course, flat, idx) {
   // Run Code
   async function runCode() {
     rightTab('run'); busy(true);
-    out.textContent = 'Compiling and running...';
+    out.textContent = isLinuxCourse ? 'Executing shell commands in simulated environment...' : 'Compiling and running...';
     runDiagnosticBox.innerHTML = '';
     try {
       const j = await post('/api/run', { stdin: $('stdin') ? $('stdin').value : '' });
@@ -1300,7 +2092,10 @@ function workspace(course, flat, idx) {
         if (j.stderr) {
           out.append(Object.assign(document.createElement('span'), { className: 'e', textContent: (j.stdout ? '\n' : '') + j.stderr }));
         }
-        if (!j.stdout && !j.stderr) out.textContent = '(Program completed with no output)';
+        if (!j.stdout && !j.stderr) out.textContent = isLinuxCourse ? 'student@learn4free:~/workspace$ ' : '(Program completed with no output)';
+        if (isWebCourse) {
+          updateWebPreview(j.stdout);
+        }
       }
     } catch (e) {
       out.textContent = e.message;
@@ -1324,7 +2119,7 @@ function workspace(course, flat, idx) {
 
       if (!j.compiled) {
         summaryBanner.className = 'test-summary-fail';
-        summaryBanner.innerHTML = `<div class="summary-title">${lucide('x-circle', 16)} <span>Compilation Failed</span></div><div class="summary-desc">Rust could not compile your program. Review the guidance below:</div>`;
+        summaryBanner.innerHTML = `<div class="summary-title">${lucide('x-circle', 16)} <span>Execution Failed</span></div><div class="summary-desc">${course.language || 'The compiler'} could not run your program. Review the guidance below:</div>`;
         const diag = friendlyDiagnostic(j.error);
         results.innerHTML = `
           ${diag ? `

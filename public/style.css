@@ -968,6 +968,212 @@ code, pre, textarea, kbd { font-family: var(--font-mono); }
 .tab { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 16px; display: none; }
 .tab.on { display: block; }
 
+/* Live Browser Preview Tab */
+.tab.web-preview-tab {
+  display: none;
+  flex-direction: column;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #f8fafc;
+}
+.tab.web-preview-tab.on {
+  display: flex;
+}
+.browser-mockup {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+}
+.browser-mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #f1f5f9;
+  border-bottom: 1px solid #cbd5e1;
+  flex: none;
+}
+.browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.b-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.b-dot.close { background: #ef4444; }
+.b-dot.min { background: #f59e0b; }
+.b-dot.max { background: #10b981; }
+.browser-address-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11.5px;
+  font-family: var(--font-mono);
+  color: #475569;
+  min-width: 0;
+}
+.browser-ssl-icon {
+  color: #10b981;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+.browser-url {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.browser-reload-btn {
+  background: none;
+  border: 0;
+  color: #64748b;
+  cursor: pointer;
+  padding: 2px 4px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+  transition: background 0.1s;
+}
+.browser-reload-btn:hover {
+  background: #e2e8f0;
+  color: var(--navy);
+}
+.browser-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+  background: #d1fae5;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  flex: none;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  animation: pulseLive 2s infinite;
+}
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+.browser-viewport {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  background: #ffffff;
+}
+#web-preview-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+  display: block;
+}
+
+/* Linux Terminal Experience */
+.term-head {
+  background: #0a0e17;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.term-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 12px;
+}
+.term-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.term-dot.close { background: #ff5f56; border: 1px solid #e0443e; }
+.term-dot.min { background: #ffbd2e; border: 1px solid #dea123; }
+.term-dot.max { background: #27c93f; border: 1px solid #1aab29; }
+.term-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #a5b4fc;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.btn-term-run {
+  background: #1e293b !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+.btn-term-run:hover {
+  background: #38bdf8 !important;
+  color: #0b0f19 !important;
+}
+.term-env-bar {
+  background: #0d131f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  flex: none;
+}
+.term-env-badge {
+  background: #1e1b4b;
+  color: #818cf8;
+  border: 1px solid #3730a3;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.term-env-user { color: #34d399; font-weight: 700; }
+.term-env-sep { color: #94a3b8; }
+.term-env-cwd { color: #38bdf8; font-weight: 700; }
+.term-env-hint { margin-left: auto; color: #64748b; font-size: 11px; }
+
+.editor.is-terminal {
+  background: #080c14;
+}
+.editor.is-terminal .gutter {
+  background: #05080f;
+  color: #475569;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+.editor.is-terminal #code {
+  caret-color: #34d399;
+}
+.out.is-terminal {
+  background: #080c14;
+  color: #f1f5f9;
+  border-color: #1e293b;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
 .stdin-box {
   width: 100%;
   height: 64px;
