@@ -2000,7 +2000,8 @@ function workspace(course, flat, idx) {
         body: JSON.stringify({ course: course.id, lesson: lesson.id, code: code.value, ...body })
       });
       if (r.ok) {
-        return await r.json();
+        const data = await r.json();
+        if (!data.results || !data.results.some(t => t.got && t.got.includes("disallowed for this context"))) return data;
       }
     } catch (_) {}
     return clientSideEvaluate(path, course, lesson, code.value, body);
